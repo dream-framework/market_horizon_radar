@@ -148,6 +148,43 @@ class MathTests(unittest.TestCase):
         self.assertEqual(mod.dominant_class({"dust_cloud": 0, "defensive_decay": 2, "ridge_reach": 1}), "defensive_decay")
         self.assertEqual(mod.dominant_class({"dust_cloud": 0, "defensive_decay": 0}), "news")
 
+    def test_generic_8k_boilerplate_does_not_score_sec_materiality(self):
+        signals = {
+            "sec_min_material_score": 1.0,
+            "sec_material_items": ["1.03", "2.05", "2.06", "3.01", "4.01"],
+            "sec_item_weights": {"2.02": {"dust_cloud": 0.0, "defensive_decay": 0.0}},
+            "sec_material_keywords": {
+                "dust_cloud": ["chapter 11", "bankruptcy", "liquidation"],
+                "defensive_decay": ["withdraws guidance", "weak demand"],
+                "ridge_reach": ["new plant"],
+                "geo_vector": ["sanctions", "export controls"],
+            },
+        }
+        scores, basis = mod.score_sec_filing(
+            "8-K",
+            "2.02",
+            "TSLA 8-K filed 2026-07-02",
+            "UNITED STATES SECURITIES AND EXCHANGE COMMISSION current report forward looking statements",
+            signals,
+        )
+        self.assertEqual(sum(scores.values()), 0.0)
+        self.assertEqual(basis, [])
+
+    def test_material_sec_filing_scores_only_on_specific_evidence(self):
+        signals = {
+            "sec_min_material_score": 1.0,
+            "sec_material_items": ["1.03", "2.05", "2.06", "3.01", "4.01"],
+            "sec_item_weights": {"1.03": {"dust_cloud": 4.0, "defensive_decay": 4.0}},
+            "sec_material_keywords": {
+                "dust_cloud": ["chapter 11", "bankruptcy", "liquidation"],
+                "defensive_decay": ["withdraws guidance", "weak demand"],
+            },
+        }
+        scores, basis = mod.score_sec_filing("8-K", "1.03", "Company 8-K", "chapter 11 filing", signals)
+        self.assertGreater(scores["dust_cloud"], 0)
+        self.assertGreater(scores["defensive_decay"], 0)
+        self.assertTrue(basis)
+
 
 if __name__ == "__main__":
     unittest.main()
