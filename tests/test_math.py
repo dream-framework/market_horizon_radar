@@ -118,6 +118,18 @@ class MathTests(unittest.TestCase):
         self.assertNotEqual(score["phase"], "WARMUP")
         self.assertIsNotNone(score["probability"])
 
+
+    def test_decode_http_body_handles_gzip(self):
+        import gzip
+
+        class Headers(dict):
+            def get(self, key, default=None):
+                return super().get(key, default)
+
+        payload = b'{"ok": true}'
+        text = mod._decode_http_body(gzip.compress(payload), Headers({"Content-Encoding": "gzip"}))
+        self.assertEqual(text, payload.decode("utf-8"))
+
     def test_gdelt_combined_query_preferred(self):
         signals = {
             "gdelt_combined_query": {
