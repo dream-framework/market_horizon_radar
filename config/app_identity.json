@@ -2,3 +2,4 @@
   "SEC_USER_AGENT": "MarketHorizonRadar/1.0 your_email@example.com",
   "note": "This is not an API key. It is plain text sent to SEC as the HTTP User-Agent. Replace your_email@example.com with a real contact email when possible."
 }
+
