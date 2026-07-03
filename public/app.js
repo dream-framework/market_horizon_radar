@@ -47,7 +47,7 @@ function renderCards(snapshot) {
   const html = [
     metric('phase', `${s.phase || 'n/a'}`, `${s.phase_label || ''}`, phaseClass),
     metric('gated p', probabilityLabel, s.baseline_status || 'n/a', s.probability == null ? 'warnmetric' : ''),
-    metric('raw pressure', pctSoft(s.raw_probability), 'ungated formula only'),
+    metric('raw pressure', s.raw_probability == null ? 'suppressed' : pctSoft(s.raw_probability), s.raw_probability_probe == null ? 'ungated formula only' : ('probe ' + pctSoft(s.raw_probability_probe))),
     metric('dust', num(raw.dust_cloud), 'reactive compression'),
     metric('decay', num(raw.defensive_decay), 'continuation weakness'),
     metric('reach', num(raw.ridge_reach), 'forward optionality'),
@@ -135,6 +135,7 @@ function snapshotAsHistoryRow(snapshot) {
     generated_at_utc: snapshot.generated_at_utc,
     probability: s.probability,
     raw_probability: s.raw_probability,
+    raw_probability_probe: s.raw_probability_probe,
     phase: s.phase,
     phase_label: s.phase_label,
     confidence: s.confidence,
@@ -185,7 +186,7 @@ async function main() {
     if (!history.length && snapshot.generated_at_utc) history = [snapshotAsHistoryRow(snapshot)];
     renderLineChart(document.getElementById('probChart'), history, [
       { name: 'gated p', get: r => r.probability },
-      { name: 'raw pressure', get: r => r.raw_probability }
+      { name: 'raw/probe', get: r => r.raw_probability ?? r.raw_probability_probe }
     ]);
     renderLineChart(document.getElementById('indexChart'), history, [
       { name: 'dust', get: r => r.raw_indices?.dust_cloud },
