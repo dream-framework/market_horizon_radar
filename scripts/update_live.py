@@ -35,7 +35,7 @@ SEC_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 FRED_OBS_URL = "https://api.stlouisfed.org/fred/series/observations"
-APP_VERSION = "2026-07-03-livefix5-sec-materiality-graphs"
+APP_VERSION = "2026-07-03-livefix6-strict-sec-evidence"
 DEFAULT_SEC_USER_AGENT = "MarketHorizonRadar/1.0 your_email@example.com"
 
 
@@ -204,6 +204,21 @@ def classify_text(text: str, signals: dict[str, Any], hint: str | None = None) -
 
 
 
+def sanitize_sec_signal_text(text: str) -> str:
+    """Remove SEC/XBRL boilerplate that causes false phrase hits.
+
+    EDGAR primary documents frequently include inline XBRL labels, exhibit
+    legends, indenture boilerplate, and taxonomy member names. Those are useful
+    for legal filing context but bad as distress evidence. Keep normal prose,
+    remove token-like tags and compress whitespace before phrase matching.
+    """
+    text = re.sub(r"\b[a-zA-Z0-9_-]+:[A-Za-z0-9_.-]+\b", " ", text)
+    text = re.sub(r"\b[A-Za-z]+(?:[A-Z][a-z0-9]+){3,}\b", " ", text)
+    text = re.sub(r"\b\d{10}\b", " ", text)
+    text = re.sub(r"\s+", " ", text)
+    return text.strip()
+
+
 def phrase_matches(text: str, phrases: list[str]) -> list[str]:
     """Return configured phrases found in text using conservative phrase matching."""
     lower = text.lower()
@@ -218,12 +233,13 @@ def phrase_matches(text: str, phrases: list[str]) -> list[str]:
 
 
 def score_sec_filing(form: str, items: str, base_text: str, doc_text: str, signals: dict[str, Any]) -> tuple[dict[str, float], list[str]]:
-    """Score an SEC filing only when it contains material evidence.
+    """Score an SEC filing only when it contains explicit material evidence.
 
-    Generic 8-K/10-Q/10-K existence is not evidence of dust, decay, reach, or
-    geopolitics. The first repo version scanned broad filing text and therefore
-    picked up boilerplate risk/legal language. This function uses: material SEC
-    item codes, plus a tight SEC-specific phrase list.
+    Generic 8-K / earnings / debt-offering filings are not corporate dust by
+    themselves. This function is deliberately conservative: direct SEC item
+    scoring is limited to distress-style items, and keyword scoring uses a hard
+    phrase list after stripping SEC/XBRL boilerplate. This prevents routine
+    filings from becoming false S3/S4 signals.
     """
     scores = {
         "dust_cloud": 0.0,
@@ -236,32 +252,42 @@ def score_sec_filing(form: str, items: str, base_text: str, doc_text: str, signa
     item_weights = signals.get("sec_item_weights", {})
     material_items = set(str(x) for x in signals.get("sec_material_items", ["1.03", "2.05", "2.06", "3.01", "4.01"]))
     item_list = re.findall(r"\d+\.\d+", items or "")
+    direct_item_score = 0.0
     for item in item_list:
         weights = item_weights.get(item, {})
-        if not weights:
-            continue
-        # Routine earnings/contracts/officer-change items require supporting
-        # phrases below. Material distress items can score directly.
-        if item not in material_items:
+        if not weights or item not in material_items:
             continue
         for cls, val in weights.items():
-            scores[cls] = scores.get(cls, 0.0) + float(val)
-        basis.append(f"SEC item {item}")
+            val_f = float(val)
+            scores[cls] = scores.get(cls, 0.0) + val_f
+            direct_item_score += abs(val_f)
+        basis.append(f"SEC material item {item}")
 
-    text_for_keywords = " ".join([base_text or "", doc_text or ""])[:30000]
-    material_keywords = signals.get("sec_material_keywords", {})
+    raw_text = " ".join([base_text or "", doc_text or ""])
+    text_for_keywords = sanitize_sec_signal_text(raw_text)[:30000]
+
+    # Hard phrases are allowed to score without a material item. Soft/general
+    # phrases should stay in the GDELT/news classifier, not SEC filing scoring.
+    material_keywords = signals.get("sec_hard_material_keywords") or signals.get("sec_material_keywords", {})
     keyword_weights = signals.get("sec_keyword_weights", {})
+    keyword_score = 0.0
     for cls, phrases in material_keywords.items():
         matches = phrase_matches(text_for_keywords, list(phrases))
         if not matches:
             continue
         weight = float(keyword_weights.get(cls, 1.0))
-        # Cap keyword contribution so one verbose filing cannot dominate the run.
-        scores[cls] = scores.get(cls, 0.0) + min(3.0, weight * len(matches))
-        basis.extend([f"{cls} phrase: {m}" for m in matches[:5]])
+        contribution = min(3.0, weight * len(matches))
+        scores[cls] = scores.get(cls, 0.0) + contribution
+        keyword_score += abs(contribution)
+        basis.extend([f"{cls} hard phrase: {m}" for m in matches[:5]])
 
-    min_score = float(signals.get("sec_min_material_score", 1.0))
-    if sum(abs(v) for v in scores.values()) < min_score:
+    # If a routine 8-K only has weak/broad text, suppress it. The model can
+    # still observe it in feed status, but it is not deformation evidence.
+    min_score = float(signals.get("sec_min_material_score", 2.0))
+    total_score = sum(abs(v) for v in scores.values())
+    if direct_item_score <= 0 and keyword_score <= 0:
+        return ({k: 0.0 for k in scores}, [])
+    if total_score < min_score:
         return ({k: 0.0 for k in scores}, [])
     return scores, basis
 
@@ -449,9 +475,11 @@ def fetch_gdelt_evidence(signals: dict[str, Any], now: dt.datetime, feed_status:
     }
     url = GDELT_DOC_URL + "?" + urllib.parse.urlencode(params)
     headers = {"User-Agent": os.getenv("GDELT_USER_AGENT", os.getenv("SEC_USER_AGENT", DEFAULT_SEC_USER_AGENT)).strip() or DEFAULT_SEC_USER_AGENT}
+    cache_path = DATA_DIR / "gdelt_articles_cache.json"
     try:
         data = http_get_json(url, headers=headers, timeout=45, retries=4, sleep_s=5.0)
         articles = data.get("articles", []) if isinstance(data, dict) else []
+        write_json(cache_path, {"cached_at_utc": iso_z(now), "articles": articles})
         feed_status.append({
             "source": "GDELT DOC",
             "ok": True,
@@ -460,8 +488,19 @@ def fetch_gdelt_evidence(signals: dict[str, Any], now: dt.datetime, feed_status:
             "detail": "single combined request; local classification",
         })
     except Exception as exc:  # noqa: BLE001
-        feed_status.append({"source": "GDELT DOC", "ok": False, "query": q.get("name", "combined_live_news"), "detail": str(exc)})
-        return []
+        if cache_path.exists():
+            cached = load_json(cache_path)
+            articles = cached.get("articles", []) if isinstance(cached, dict) else []
+            feed_status.append({
+                "source": "GDELT DOC",
+                "ok": False,
+                "query": q.get("name", "combined_live_news"),
+                "articles": len(articles),
+                "detail": f"using cached articles after live failure: {exc}",
+            })
+        else:
+            feed_status.append({"source": "GDELT DOC", "ok": False, "query": q.get("name", "combined_live_news"), "detail": str(exc)})
+            return []
 
     evidence: list[dict[str, Any]] = []
     for a in articles:
@@ -697,7 +736,8 @@ def build_score(current: dict[str, float], history: list[dict[str, Any]], signal
         # source outages.
         return {
             "probability": None,
-            "raw_probability": round(p, 4),
+            "raw_probability": None,
+            "raw_probability_probe": round(p, 4),
             "phase": "WARMUP",
             "phase_label": "insufficient_live_corporate_evidence",
             "confidence": round(min(confidence, 0.20), 4),
@@ -836,6 +876,7 @@ def main() -> int:
         "generated_at_utc": snapshot["generated_at_utc"],
         "probability": score["probability"],
         "raw_probability": score.get("raw_probability"),
+        "raw_probability_probe": score.get("raw_probability_probe"),
         "phase": score["phase"],
         "phase_label": score["phase_label"],
         "confidence": score["confidence"],
