@@ -1,0 +1,62 @@
+name: hourly-live-update
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "7 * * * *"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: corporate-horizon-radar
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Run live updater
+        env:
+          # Plain-text fallback is intentionally included so SEC does not skip on first deploy.
+          # Replace your_email@example.com with a real contact, or set the SEC_USER_AGENT secret.
+          SEC_USER_AGENT: ${{ secrets.SEC_USER_AGENT || 'MarketHorizonRadar/1.0 your_email@example.com' }}
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/update_live.py
+
+      - name: Commit generated live data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data data || true
+          git commit -m "Hourly live radar update" || echo "No generated data changes to commit"
+          git push || true
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: public
+
+  deploy:
+    needs: update
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

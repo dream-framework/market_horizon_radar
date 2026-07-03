@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Corporate Horizon Radar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Corporate Horizon Radar</h1>
+      <p>Live-only ridge / dust / decay monitor</p>
+    </div>
+    <div class="stamp" id="stamp">loading</div>
+  </header>
+
+  <main class="dashboard">
+    <section class="metrics" id="cards"></section>
+
+    <section class="workgrid">
+      <section class="panel narrative-panel">
+        <h2>Phase narrative</h2>
+        <div id="narrative" class="narrative"></div>
+        <pre id="math" class="math"></pre>
+      </section>
+
+      <section class="panel prob-panel">
+        <h2>Probability / pressure history</h2>
+        <div id="probChart" class="chart"></div>
+      </section>
+
+      <section class="panel index-panel">
+        <h2>Raw index history</h2>
+        <div id="indexChart" class="chart"></div>
+      </section>
+
+      <section class="panel evidence-panel">
+        <h2>Top live evidence</h2>
+        <div class="tablewrap">
+          <table id="evidenceTable">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Class</th>
+                <th>Entity</th>
+                <th>Title</th>
+                <th>Source</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel feed-panel">
+        <h2>Feed status</h2>
+        <div id="feedStatus" class="feed"></div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

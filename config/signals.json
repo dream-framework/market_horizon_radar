@@ -1,0 +1,204 @@
+{
+  "min_history_points_for_baseline": 24,
+  "history_window_points": 720,
+  "probability": {
+    "intercept": -0.35,
+    "dust_cloud_z": 0.9,
+    "defensive_decay_z": 0.7,
+    "sync_z": 0.55,
+    "geo_vector_z": 0.35,
+    "macro_vector_z": 0.3,
+    "ridge_reach_z": -0.5
+  },
+  "phase_thresholds": [
+    {
+      "phase": "S0",
+      "label": "normal_noise",
+      "max_probability": 0.3
+    },
+    {
+      "phase": "S1",
+      "label": "local_stress",
+      "max_probability": 0.48
+    },
+    {
+      "phase": "S2",
+      "label": "sector_horizon_compression",
+      "max_probability": 0.66
+    },
+    {
+      "phase": "S3",
+      "label": "cross_sector_defense",
+      "max_probability": 0.82
+    },
+    {
+      "phase": "S4",
+      "label": "forced_repricing_risk",
+      "max_probability": 1.0
+    }
+  ],
+  "sec_form_weights": {
+    "8-K": 1.0,
+    "10-Q": 0.7,
+    "10-K": 0.8,
+    "6-K": 0.7,
+    "20-F": 0.8,
+    "S-1": 0.5,
+    "424B": 0.4
+  },
+  "sec_item_weights": {
+    "1.03": {
+      "dust_cloud": 4.0,
+      "defensive_decay": 4.0
+    },
+    "2.05": {
+      "dust_cloud": 2.6,
+      "defensive_decay": 2.4
+    },
+    "2.06": {
+      "dust_cloud": 2.5,
+      "defensive_decay": 2.6
+    },
+    "3.01": {
+      "dust_cloud": 2.4,
+      "defensive_decay": 2.6
+    },
+    "4.01": {
+      "dust_cloud": 2.2,
+      "defensive_decay": 1.6
+    },
+    "5.02": {
+      "dust_cloud": 1.2,
+      "defensive_decay": 0.8
+    },
+    "1.01": {
+      "dust_cloud": 0.4,
+      "ridge_reach": 0.6
+    },
+    "2.02": {
+      "dust_cloud": 0.4,
+      "defensive_decay": 0.4
+    }
+  },
+  "keywords": {
+    "dust_cloud": [
+      "bankruptcy",
+      "chapter 11",
+      "liquidation",
+      "going concern",
+      "asset sale",
+      "sale leaseback",
+      "strategic alternatives",
+      "restructuring",
+      "impairment",
+      "write-down",
+      "store closure",
+      "layoff",
+      "headcount reduction",
+      "dividend suspension",
+      "buyback suspension",
+      "covenant waiver",
+      "covenant amendment",
+      "refinancing risk",
+      "delisting",
+      "auditor resignation",
+      "restatement"
+    ],
+    "defensive_decay": [
+      "guidance cut",
+      "withdraws guidance",
+      "weak demand",
+      "margin pressure",
+      "liquidity concern",
+      "downgrade",
+      "negative outlook",
+      "debt maturity",
+      "higher interest expense",
+      "credit facility",
+      "inventory correction",
+      "customer churn",
+      "cash burn",
+      "supply chain disruption",
+      "declining sales"
+    ],
+    "ridge_reach": [
+      "expansion",
+      "new plant",
+      "long-term contract",
+      "capacity increase",
+      "market share gain",
+      "investment",
+      "research and development",
+      "r&d",
+      "hiring",
+      "pricing power",
+      "backlog growth",
+      "strategic acquisition",
+      "new partnership",
+      "infrastructure investment"
+    ],
+    "geo_vector": [
+      "war",
+      "invasion",
+      "sanctions",
+      "tariff",
+      "export controls",
+      "blockade",
+      "shipping disruption",
+      "military escalation",
+      "border conflict",
+      "energy shock",
+      "red sea",
+      "taiwan strait",
+      "south china sea"
+    ],
+    "macro_vector": [
+      "interest rate hike",
+      "credit crunch",
+      "recession",
+      "inflation shock",
+      "liquidity stress",
+      "yield curve",
+      "default risk",
+      "debt ceiling",
+      "banking crisis",
+      "commercial real estate stress"
+    ]
+  },
+  "fred_series": [
+    {
+      "id": "DFF",
+      "name": "Effective Federal Funds Rate",
+      "class_hint": "macro_vector"
+    },
+    {
+      "id": "DGS10",
+      "name": "10-Year Treasury Constant Maturity Rate",
+      "class_hint": "macro_vector"
+    },
+    {
+      "id": "T10Y2Y",
+      "name": "10-Year Minus 2-Year Treasury Spread",
+      "class_hint": "macro_vector"
+    },
+    {
+      "id": "BAMLH0A0HYM2",
+      "name": "ICE BofA US High Yield Option-Adjusted Spread",
+      "class_hint": "macro_vector"
+    },
+    {
+      "id": "NFCI",
+      "name": "Chicago Fed National Financial Conditions Index",
+      "class_hint": "macro_vector"
+    }
+  ],
+  "min_sync_evidence_for_phase": 3,
+  "min_corporate_deformation_evidence_for_phase": 2,
+  "require_nonzero_dust_or_decay_for_phase": true,
+  "gdelt_combined_query": {
+    "name": "corporate_geo_macro_combined",
+    "query": "((bankruptcy OR liquidation OR restructuring OR impairment OR \"strategic alternatives\" OR \"store closure\" OR layoffs OR \"guidance cut\" OR \"withdraws guidance\" OR \"weak demand\" OR downgrade OR \"liquidity concern\" OR \"margin pressure\" OR expansion OR \"new plant\" OR \"long-term contract\" OR \"capacity increase\" OR \"strategic acquisition\") (company OR corporate OR retailer OR manufacturer OR bank OR airline OR market)) OR (war OR invasion OR sanctions OR tariff OR \"export controls\" OR blockade OR \"shipping disruption\" OR \"military escalation\") OR (\"interest rate hike\" OR \"credit crunch\" OR recession OR \"liquidity stress\" OR \"default risk\" OR \"debt ceiling\")",
+    "timespan": "24h",
+    "maxrecords": 100
+  }
+}

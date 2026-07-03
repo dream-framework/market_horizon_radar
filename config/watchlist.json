@@ -1,0 +1,31 @@
+{
+  "max_sec_companies_per_run": 60,
+  "sec_document_fetch_limit_per_run": 35,
+  "lookback_hours": 72,
+  "tickers": [
+    {"ticker": "WMT", "sector": "retail"},
+    {"ticker": "TGT", "sector": "retail"},
+    {"ticker": "COST", "sector": "retail"},
+    {"ticker": "HD", "sector": "retail"},
+    {"ticker": "LOW", "sector": "retail"},
+    {"ticker": "M", "sector": "retail"},
+    {"ticker": "KSS", "sector": "retail"},
+    {"ticker": "BBY", "sector": "retail"},
+    {"ticker": "AMZN", "sector": "platform_retail"},
+    {"ticker": "AAPL", "sector": "technology"},
+    {"ticker": "MSFT", "sector": "technology"},
+    {"ticker": "NVDA", "sector": "semiconductors"},
+    {"ticker": "TSLA", "sector": "autos"},
+    {"ticker": "F", "sector": "autos"},
+    {"ticker": "GM", "sector": "autos"},
+    {"ticker": "JPM", "sector": "banks"},
+    {"ticker": "BAC", "sector": "banks"},
+    {"ticker": "C", "sector": "banks"},
+    {"ticker": "XOM", "sector": "energy"},
+    {"ticker": "CVX", "sector": "energy"},
+    {"ticker": "DAL", "sector": "airlines"},
+    {"ticker": "UAL", "sector": "airlines"},
+    {"ticker": "FDX", "sector": "logistics"},
+    {"ticker": "UPS", "sector": "logistics"}
+  ]
+}
