@@ -127,3 +127,4 @@ a:hover { text-decoration: underline; }
   .dashboard { height: auto; }
   .metrics { grid-template-columns: repeat(2, 1fr); }
 }
+.point { stroke-width: 1.6; fill: var(--panel); }
