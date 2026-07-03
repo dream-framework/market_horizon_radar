@@ -81,7 +81,8 @@ class MathTests(unittest.TestCase):
         score = mod.build_score(current, [], signals)
         self.assertEqual(score["phase"], "WARMUP")
         self.assertIsNone(score["probability"])
-        self.assertGreater(score["raw_probability"], 0)
+        self.assertIsNone(score["raw_probability"])
+        self.assertGreater(score["raw_probability_probe"], 0)
 
     def test_corporate_deformation_can_create_phase_when_gates_met(self):
         evidence = []
@@ -150,10 +151,11 @@ class MathTests(unittest.TestCase):
 
     def test_generic_8k_boilerplate_does_not_score_sec_materiality(self):
         signals = {
-            "sec_min_material_score": 1.0,
+            "sec_min_material_score": 2.0,
             "sec_material_items": ["1.03", "2.05", "2.06", "3.01", "4.01"],
             "sec_item_weights": {"2.02": {"dust_cloud": 0.0, "defensive_decay": 0.0}},
-            "sec_material_keywords": {
+            "sec_keyword_weights": {"dust_cloud": 2.2, "defensive_decay": 2.2, "ridge_reach": 1.4, "geo_vector": 1.6},
+            "sec_hard_material_keywords": {
                 "dust_cloud": ["chapter 11", "bankruptcy", "liquidation"],
                 "defensive_decay": ["withdraws guidance", "weak demand"],
                 "ridge_reach": ["new plant"],
@@ -170,12 +172,30 @@ class MathTests(unittest.TestCase):
         self.assertEqual(sum(scores.values()), 0.0)
         self.assertEqual(basis, [])
 
+
+    def test_sec_debt_offering_boilerplate_does_not_score(self):
+        signals = {
+            "sec_min_material_score": 2.0,
+            "sec_material_items": ["1.03", "2.05", "2.06", "3.01", "4.01"],
+            "sec_item_weights": {"8.01": {"dust_cloud": 0.0, "defensive_decay": 0.0}},
+            "sec_keyword_weights": {"dust_cloud": 2.2, "defensive_decay": 2.2},
+            "sec_hard_material_keywords": {
+                "dust_cloud": ["chapter 11", "bankruptcy", "liquidation", "covenant waiver"],
+                "defensive_decay": ["withdraws guidance", "weak demand", "liquidity concern"],
+            },
+        }
+        text = "ZeroPointFivePercentNotesDue2028Member senior notes indenture event of default under the notes forward looking statements"
+        scores, basis = mod.score_sec_filing("8-K", "8.01", "XOM 8-K filed", text, signals)
+        self.assertEqual(sum(scores.values()), 0.0)
+        self.assertEqual(basis, [])
+
     def test_material_sec_filing_scores_only_on_specific_evidence(self):
         signals = {
-            "sec_min_material_score": 1.0,
+            "sec_min_material_score": 2.0,
             "sec_material_items": ["1.03", "2.05", "2.06", "3.01", "4.01"],
             "sec_item_weights": {"1.03": {"dust_cloud": 4.0, "defensive_decay": 4.0}},
-            "sec_material_keywords": {
+            "sec_keyword_weights": {"dust_cloud": 2.2, "defensive_decay": 2.2},
+            "sec_hard_material_keywords": {
                 "dust_cloud": ["chapter 11", "bankruptcy", "liquidation"],
                 "defensive_decay": ["withdraws guidance", "weak demand"],
             },
