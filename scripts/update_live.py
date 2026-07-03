@@ -35,7 +35,7 @@ SEC_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 FRED_OBS_URL = "https://api.stlouisfed.org/fred/series/observations"
-APP_VERSION = "2026-07-02-livefix4-sec-json-nonfatal"
+APP_VERSION = "2026-07-03-livefix5-sec-materiality-graphs"
 DEFAULT_SEC_USER_AGENT = "MarketHorizonRadar/1.0 your_email@example.com"
 
 
@@ -203,6 +203,68 @@ def classify_text(text: str, signals: dict[str, Any], hint: str | None = None) -
     return scores
 
 
+
+def phrase_matches(text: str, phrases: list[str]) -> list[str]:
+    """Return configured phrases found in text using conservative phrase matching."""
+    lower = text.lower()
+    matches: list[str] = []
+    for phrase in phrases:
+        p = str(phrase).lower().strip()
+        if not p:
+            continue
+        if re.search(r"(?<![a-z0-9])" + re.escape(p) + r"(?![a-z0-9])", lower):
+            matches.append(str(phrase))
+    return matches
+
+
+def score_sec_filing(form: str, items: str, base_text: str, doc_text: str, signals: dict[str, Any]) -> tuple[dict[str, float], list[str]]:
+    """Score an SEC filing only when it contains material evidence.
+
+    Generic 8-K/10-Q/10-K existence is not evidence of dust, decay, reach, or
+    geopolitics. The first repo version scanned broad filing text and therefore
+    picked up boilerplate risk/legal language. This function uses: material SEC
+    item codes, plus a tight SEC-specific phrase list.
+    """
+    scores = {
+        "dust_cloud": 0.0,
+        "defensive_decay": 0.0,
+        "ridge_reach": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.0,
+    }
+    basis: list[str] = []
+    item_weights = signals.get("sec_item_weights", {})
+    material_items = set(str(x) for x in signals.get("sec_material_items", ["1.03", "2.05", "2.06", "3.01", "4.01"]))
+    item_list = re.findall(r"\d+\.\d+", items or "")
+    for item in item_list:
+        weights = item_weights.get(item, {})
+        if not weights:
+            continue
+        # Routine earnings/contracts/officer-change items require supporting
+        # phrases below. Material distress items can score directly.
+        if item not in material_items:
+            continue
+        for cls, val in weights.items():
+            scores[cls] = scores.get(cls, 0.0) + float(val)
+        basis.append(f"SEC item {item}")
+
+    text_for_keywords = " ".join([base_text or "", doc_text or ""])[:30000]
+    material_keywords = signals.get("sec_material_keywords", {})
+    keyword_weights = signals.get("sec_keyword_weights", {})
+    for cls, phrases in material_keywords.items():
+        matches = phrase_matches(text_for_keywords, list(phrases))
+        if not matches:
+            continue
+        weight = float(keyword_weights.get(cls, 1.0))
+        # Cap keyword contribution so one verbose filing cannot dominate the run.
+        scores[cls] = scores.get(cls, 0.0) + min(3.0, weight * len(matches))
+        basis.extend([f"{cls} phrase: {m}" for m in matches[:5]])
+
+    min_score = float(signals.get("sec_min_material_score", 1.0))
+    if sum(abs(v) for v in scores.values()) < min_score:
+        return ({k: 0.0 for k in scores}, [])
+    return scores, basis
+
 def nonzero_classes(scores: dict[str, float]) -> list[str]:
     return [k for k, v in scores.items() if v > 0]
 
@@ -313,11 +375,7 @@ def fetch_sec_evidence(watchlist: dict[str, Any], signals: dict[str, Any], now: 
                     time.sleep(0.12)
                 except Exception as exc:  # noqa: BLE001
                     feed_status.append({"source": "SEC document", "ok": False, "ticker": ticker, "url": url_doc, "detail": str(exc)})
-            scores = classify_text(base_text + " " + doc_text, signals)
-            scores["dust_cloud"] += float(form_weights.get(form, 0.0)) * 0.15
-            for item in re.findall(r"\d+\.\d+", items):
-                for cls, val in item_weights.get(item, {}).items():
-                    scores[cls] = scores.get(cls, 0.0) + float(val)
+            scores, basis = score_sec_filing(form, items, base_text, doc_text, signals)
             if not nonzero_classes(scores):
                 continue
             excerpt = doc_text[:360] if doc_text else base_text[:360]
@@ -335,7 +393,7 @@ def fetch_sec_evidence(watchlist: dict[str, Any], signals: dict[str, Any], now: 
                 "summary": excerpt,
                 "classification": scores,
                 "classes": nonzero_classes(scores),
-                "metadata": {"form": form, "items": items, "accession": accession}
+                "metadata": {"form": form, "items": items, "accession": accession, "classification_basis": basis}
             })
     return evidence
 
@@ -751,6 +809,7 @@ def main() -> int:
     history = read_jsonl(HISTORY_PATH, limit=hist_window)
     current = aggregate_current(evidence)
     score = build_score(current, history, signals)
+    score["history_rows_available"] = min(hist_window, len(history) + 1)
     snapshot = {
         "generated_at_utc": iso_z(now),
         "model_name": "market_horizon_radar_live_only_v2",
