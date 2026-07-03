@@ -192,16 +192,16 @@
       "class_hint": "macro_vector"
     }
   ],
-  "min_sync_evidence_for_phase": 3,
-  "min_corporate_deformation_evidence_for_phase": 2,
+  "min_sync_evidence_for_phase": 4,
+  "min_corporate_deformation_evidence_for_phase": 3,
   "require_nonzero_dust_or_decay_for_phase": true,
   "gdelt_combined_query": {
     "name": "corporate_geo_macro_combined",
     "query": "((bankruptcy OR liquidation OR restructuring OR impairment OR \"strategic alternatives\" OR \"store closure\" OR layoffs OR \"guidance cut\" OR \"withdraws guidance\" OR \"weak demand\" OR downgrade OR \"liquidity concern\" OR \"margin pressure\" OR expansion OR \"new plant\" OR \"long-term contract\" OR \"capacity increase\" OR \"strategic acquisition\") (company OR corporate OR retailer OR manufacturer OR bank OR airline OR market)) OR (war OR invasion OR sanctions OR tariff OR \"export controls\" OR blockade OR \"shipping disruption\" OR \"military escalation\") OR (\"interest rate hike\" OR \"credit crunch\" OR recession OR \"liquidity stress\" OR \"default risk\" OR \"debt ceiling\")",
-    "timespan": "24h",
-    "maxrecords": 100
+    "timespan": "12h",
+    "maxrecords": 50
   },
-  "sec_min_material_score": 1.0,
+  "sec_min_material_score": 2.0,
   "sec_material_items": [
     "1.03",
     "2.05",
@@ -210,10 +210,10 @@
     "4.01"
   ],
   "sec_keyword_weights": {
-    "dust_cloud": 1.2,
-    "defensive_decay": 1.1,
-    "ridge_reach": 0.9,
-    "geo_vector": 1.0
+    "dust_cloud": 2.2,
+    "defensive_decay": 2.2,
+    "ridge_reach": 1.4,
+    "geo_vector": 1.6
   },
   "sec_material_keywords": {
     "dust_cloud": [
@@ -222,26 +222,20 @@
       "liquidation",
       "going concern",
       "substantial doubt",
-      "asset sale",
-      "sale leaseback",
-      "strategic alternatives",
-      "restructuring plan",
-      "restructuring charge",
       "material impairment",
       "impairment charge",
-      "write-down",
-      "store closure",
-      "headcount reduction",
+      "delisting notice",
+      "auditor resignation",
+      "restatement",
+      "covenant waiver",
+      "covenant amendment",
       "workforce reduction",
-      "layoff",
+      "headcount reduction",
       "dividend suspension",
       "suspended dividend",
       "buyback suspension",
-      "covenant waiver",
-      "covenant amendment",
-      "delisting notice",
-      "auditor resignation",
-      "restatement"
+      "strategic alternatives",
+      "store closure"
     ],
     "defensive_decay": [
       "withdraws guidance",
@@ -249,17 +243,10 @@
       "guidance cut",
       "lowers guidance",
       "weak demand",
-      "margin pressure",
       "liquidity concern",
       "liquidity constraints",
-      "negative outlook",
-      "debt maturity",
-      "higher interest expense",
-      "inventory correction",
+      "margin pressure",
       "cash burn",
-      "declining sales",
-      "credit facility amendment",
-      "default under",
       "material weakness"
     ],
     "ridge_reach": [
@@ -270,8 +257,64 @@
       "new partnership",
       "infrastructure investment",
       "market share gain",
-      "backlog growth",
-      "pricing power"
+      "backlog growth"
+    ],
+    "geo_vector": [
+      "sanctions",
+      "tariff",
+      "export controls",
+      "blockade",
+      "shipping disruption",
+      "military escalation",
+      "red sea",
+      "taiwan strait",
+      "south china sea",
+      "energy shock"
+    ]
+  },
+  "sec_hard_material_keywords": {
+    "dust_cloud": [
+      "chapter 11",
+      "bankruptcy",
+      "liquidation",
+      "going concern",
+      "substantial doubt",
+      "material impairment",
+      "impairment charge",
+      "delisting notice",
+      "auditor resignation",
+      "restatement",
+      "covenant waiver",
+      "covenant amendment",
+      "workforce reduction",
+      "headcount reduction",
+      "dividend suspension",
+      "suspended dividend",
+      "buyback suspension",
+      "strategic alternatives",
+      "store closure"
+    ],
+    "defensive_decay": [
+      "withdraws guidance",
+      "withdrawn guidance",
+      "guidance cut",
+      "lowers guidance",
+      "weak demand",
+      "liquidity concern",
+      "liquidity constraints",
+      "margin pressure",
+      "cash burn",
+      "material weakness"
+    ],
+    "ridge_reach": [
+      "capacity increase",
+      "new plant",
+      "long-term contract",
+      "strategic acquisition",
+      "new partnership",
+      "infrastructure investment",
+      "market share gain",
+      "backlog growth"
     ],
     "geo_vector": [
       "sanctions",
