@@ -6,6 +6,7 @@ No demo rows are created. If a feed fails, the failure is recorded in feed_statu
 from __future__ import annotations
 
 import datetime as dt
+import gzip
 import hashlib
 import html
 import json
@@ -17,6 +18,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+import zlib
 from pathlib import Path
 from typing import Any
 
@@ -33,7 +35,7 @@ SEC_TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SEC_SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik10}.json"
 GDELT_DOC_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
 FRED_OBS_URL = "https://api.stlouisfed.org/fred/series/observations"
-APP_VERSION = "2026-07-02-livefix3-sec-user-agent-text"
+APP_VERSION = "2026-07-02-livefix4-sec-json-nonfatal"
 DEFAULT_SEC_USER_AGENT = "MarketHorizonRadar/1.0 your_email@example.com"
 
 
@@ -108,6 +110,31 @@ def read_jsonl(path: Path, limit: int | None = None) -> list[dict[str, Any]]:
     return out
 
 
+def _decode_http_body(data: bytes, headers: Any) -> str:
+    """Decode HTTP body safely, including gzip/deflate when a server uses it.
+
+    urllib does not automatically decompress a response merely because the
+    request sent Accept-Encoding. SEC sometimes returns compressed content. If
+    the updater decodes compressed bytes directly as UTF-8, JSON parsing fails
+    with errors such as: Expecting value: line 1 column 1.
+    """
+    encoding = ""
+    try:
+        encoding = str(headers.get("Content-Encoding", "")).lower()
+    except Exception:  # noqa: BLE001
+        encoding = ""
+
+    if "gzip" in encoding:
+        data = gzip.decompress(data)
+    elif "deflate" in encoding:
+        try:
+            data = zlib.decompress(data)
+        except zlib.error:
+            data = zlib.decompress(data, -zlib.MAX_WBITS)
+
+    return data.decode("utf-8", errors="replace")
+
+
 def http_get_json(url: str, headers: dict[str, str] | None = None, timeout: int = 30, retries: int = 3, sleep_s: float = 0.5) -> Any:
     last_error: Exception | None = None
     for attempt in range(retries):
@@ -115,7 +142,13 @@ def http_get_json(url: str, headers: dict[str, str] | None = None, timeout: int 
             req = urllib.request.Request(url, headers=headers or {})
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 data = resp.read()
-            return json.loads(data.decode("utf-8", errors="replace"))
+                text = _decode_http_body(data, resp.headers)
+                content_type = str(resp.headers.get("Content-Type", ""))
+            try:
+                return json.loads(text)
+            except json.JSONDecodeError as exc:
+                snippet = re.sub(r"\s+", " ", text[:300]).strip()
+                raise RuntimeError(f"non-JSON response; content_type={content_type!r}; snippet={snippet!r}") from exc
         except Exception as exc:  # noqa: BLE001
             last_error = exc
             if attempt + 1 < retries:
@@ -130,7 +163,7 @@ def http_get_text(url: str, headers: dict[str, str] | None = None, timeout: int 
             req = urllib.request.Request(url, headers=headers or {})
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 data = resp.read()
-            return data.decode("utf-8", errors="replace")
+                return _decode_http_body(data, resp.headers)
         except Exception as exc:  # noqa: BLE001
             last_error = exc
             if attempt + 1 < retries:
@@ -185,7 +218,8 @@ def load_sec_ticker_map(sec_headers: dict[str, str], feed_status: list[dict[str,
             raw = load_json(cache_path)
             feed_status.append({"source": "SEC company_tickers", "ok": False, "detail": f"using cache after error: {exc}"})
         else:
-            raise
+            feed_status.append({"source": "SEC company_tickers", "ok": False, "detail": f"no cache available after error: {exc}"})
+            return {}
     out: dict[str, dict[str, Any]] = {}
     for item in raw.values():
         ticker = str(item.get("ticker", "")).upper().strip()
