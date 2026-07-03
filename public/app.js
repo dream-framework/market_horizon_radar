@@ -55,7 +55,7 @@ function renderCards(snapshot) {
     metric('macro', num(raw.macro_vector), 'context pressure'),
     metric('sync', num(raw.sync), `${raw.sync_evidence_count ?? 0} sync rows`),
     metric('evidence', `${raw.evidence_count ?? 0}`, `${raw.corporate_deformation_count ?? 0} corp rows`),
-    metric('confidence', pctSoft(s.confidence), `${s.history_points ?? 0} history rows`),
+    metric('confidence', pctSoft(s.confidence), `${s.history_rows_available ?? s.history_points ?? 0} history rows`),
     metric('gate', gateSummary(s), (s.gate_reasons || [])[0] || 'score eligible')
   ].join('');
   document.getElementById('cards').innerHTML = html;
@@ -87,13 +87,14 @@ function linePath(points, getX, getY) {
 }
 
 function renderLineChart(el, rows, series) {
-  if (!rows.length) {
+  const cleanRows = rows.filter(r => r && r.generated_at_utc);
+  if (!cleanRows.length) {
     el.innerHTML = '<div class="empty">No history yet. The hourly workflow will populate this.</div>';
     return;
   }
   const w = 720, h = 210, pad = 28;
   const prepared = series.map((s, sidx) => {
-    const points = rows.map((r, i) => {
+    const points = cleanRows.map((r, i) => {
       const v = Number(s.get(r));
       return Number.isFinite(v) ? { i, v } : null;
     }).filter(Boolean);
@@ -106,24 +107,42 @@ function renderLineChart(el, rows, series) {
   }
   let min = Math.min(...vals), max = Math.max(...vals);
   if (Math.abs(max - min) < 1e-9) { max += 1; min -= 1; }
-  const x = i => pad + (i / Math.max(1, rows.length - 1)) * (w - pad * 2);
+  const x = i => pad + (i / Math.max(1, cleanRows.length - 1)) * (w - pad * 2);
   const yVal = v => h - pad - ((v - min) / (max - min)) * (h - pad * 2);
-  let paths = '';
+  let shapes = '';
   prepared.forEach(s => {
     const cls = s.sidx === 0 ? 'line' : (s.sidx === 1 ? 'line2' : 'line3');
-    if (s.points.length) {
-      paths += `<path class="${cls}" d="${linePath(s.points, p => x(p.i), p => yVal(p.v))}"></path>`;
+    if (s.points.length >= 2) {
+      shapes += `<path class="${cls}" d="${linePath(s.points, p => x(p.i), p => yVal(p.v))}"></path>`;
     }
+    // Dots make the first one-row deployment visible instead of an empty-looking graph.
+    shapes += s.points.map(p => `<circle class="${cls} point" cx="${x(p.i).toFixed(1)}" cy="${yVal(p.v).toFixed(1)}" r="3.2"></circle>`).join('');
   });
   const labels = prepared.map((s, idx) => `<text class="ticktext" x="${pad + idx * 145}" y="17">${esc(s.name)}</text>`).join('');
   el.innerHTML = `<svg viewBox="0 0 ${w} ${h}" role="img">
     <line class="axis" x1="${pad}" y1="${h-pad}" x2="${w-pad}" y2="${h-pad}"></line>
     <line class="axis" x1="${pad}" y1="${pad}" x2="${pad}" y2="${h-pad}"></line>
     ${labels}
-    <text class="ticktext" x="${pad}" y="${h-7}">${esc(rows[0].generated_at_utc || '')}</text>
-    <text class="ticktext" text-anchor="end" x="${w-pad}" y="${h-7}">${esc(rows[rows.length-1].generated_at_utc || '')}</text>
-    ${paths}
+    <text class="ticktext" x="${pad}" y="${h-7}">${esc(cleanRows[0].generated_at_utc || '')}</text>
+    <text class="ticktext" text-anchor="end" x="${w-pad}" y="${h-7}">${esc(cleanRows[cleanRows.length-1].generated_at_utc || '')}</text>
+    ${shapes}
   </svg>`;
+}
+
+function snapshotAsHistoryRow(snapshot) {
+  const s = snapshot.score || {};
+  return {
+    generated_at_utc: snapshot.generated_at_utc,
+    probability: s.probability,
+    raw_probability: s.raw_probability,
+    phase: s.phase,
+    phase_label: s.phase_label,
+    confidence: s.confidence,
+    baseline_status: s.baseline_status,
+    raw_indices: s.raw_indices || {},
+    z_indices: s.z_indices || {},
+    evidence_count: snapshot.source_counts?.evidence_total ?? s.raw_indices?.evidence_count
+  };
 }
 
 function renderEvidence(snapshot) {
@@ -163,6 +182,7 @@ async function main() {
     renderFeedStatus(snapshot);
     let history = [];
     try { history = parseHistory(await getText('data/history.jsonl')).slice(-240); } catch { history = []; }
+    if (!history.length && snapshot.generated_at_utc) history = [snapshotAsHistoryRow(snapshot)];
     renderLineChart(document.getElementById('probChart'), history, [
       { name: 'gated p', get: r => r.probability },
       { name: 'raw pressure', get: r => r.raw_probability }
