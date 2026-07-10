@@ -115,7 +115,6 @@ function renderLineChart(el, rows, series) {
     if (s.points.length >= 2) {
       shapes += `<path class="${cls}" d="${linePath(s.points, p => x(p.i), p => yVal(p.v))}"></path>`;
     }
-    // Dots make the first one-row deployment visible instead of an empty-looking graph.
     shapes += s.points.map(p => `<circle class="${cls} point" cx="${x(p.i).toFixed(1)}" cy="${yVal(p.v).toFixed(1)}" r="3.2"></circle>`).join('');
   });
   const labels = prepared.map((s, idx) => `<text class="ticktext" x="${pad + idx * 145}" y="17">${esc(s.name)}</text>`).join('');
@@ -173,30 +172,73 @@ function renderFeedStatus(snapshot) {
   }).join('') || '<div class="empty">No feed status available.</div>';
 }
 
-async function main() {
+// ── Live update state ──────────────────────────────────────────────
+// Tracks the last snapshot timestamp we've rendered.
+// When the hourly GitHub Action commits new data, the timestamp
+// changes and we silently re-render everything.
+let lastSeenTimestamp = null;
+let isRendering = false;
+
+async function renderAll(snapshot) {
+  document.getElementById('stamp').textContent = 'generated ' + (snapshot.generated_at_utc || 'n/a');
+  renderCards(snapshot);
+  renderNarrative(snapshot);
+  renderEvidence(snapshot);
+  renderFeedStatus(snapshot);
+  let history = [];
+  try { history = parseHistory(await getText('data/history.jsonl')).slice(-240); } catch { history = []; }
+  if (!history.length && snapshot.generated_at_utc) history = [snapshotAsHistoryRow(snapshot)];
+  renderLineChart(document.getElementById('probChart'), history, [
+    { name: 'gated p', get: r => r.probability },
+    { name: 'raw/probe', get: r => r.raw_probability ?? r.raw_probability_probe }
+  ]);
+  renderLineChart(document.getElementById('indexChart'), history, [
+    { name: 'dust', get: r => r.raw_indices?.dust_cloud },
+    { name: 'decay', get: r => r.raw_indices?.defensive_decay },
+    { name: 'reach', get: r => r.raw_indices?.ridge_reach }
+  ]);
+}
+
+async function checkForUpdate() {
+  // Prevent overlapping renders if a poll fires while a previous
+  // render is still in flight.
+  if (isRendering) return;
+  isRendering = true;
+  try {
+    const resp = await fetch('data/snapshot.json?t=' + Date.now(), { cache: 'no-store' });
+    if (!resp.ok) return;
+    const snapshot = await resp.json();
+    const ts = snapshot.generated_at_utc;
+    // Only re-render if the timestamp actually changed (new data from Action).
+    if (ts && ts !== lastSeenTimestamp) {
+      lastSeenTimestamp = ts;
+      await renderAll(snapshot);
+    }
+  } catch {
+    // Snapshot not available yet (404 or network error) — silently retry next cycle.
+  } finally {
+    isRendering = false;
+  }
+}
+
+// ── Boot ───────────────────────────────────────────────────────────
+// Initial render: fetches snapshot.json and renders everything.
+// If snapshot doesn't exist yet, shows the error message.
+async function init() {
   try {
     const snapshot = await getJson('data/snapshot.json');
-    document.getElementById('stamp').textContent = 'generated ' + (snapshot.generated_at_utc || 'n/a');
-    renderCards(snapshot);
-    renderNarrative(snapshot);
-    renderEvidence(snapshot);
-    renderFeedStatus(snapshot);
-    let history = [];
-    try { history = parseHistory(await getText('data/history.jsonl')).slice(-240); } catch { history = []; }
-    if (!history.length && snapshot.generated_at_utc) history = [snapshotAsHistoryRow(snapshot)];
-    renderLineChart(document.getElementById('probChart'), history, [
-      { name: 'gated p', get: r => r.probability },
-      { name: 'raw/probe', get: r => r.raw_probability ?? r.raw_probability_probe }
-    ]);
-    renderLineChart(document.getElementById('indexChart'), history, [
-      { name: 'dust', get: r => r.raw_indices?.dust_cloud },
-      { name: 'decay', get: r => r.raw_indices?.defensive_decay },
-      { name: 'reach', get: r => r.raw_indices?.ridge_reach }
-    ]);
+    lastSeenTimestamp = snapshot.generated_at_utc;
+    await renderAll(snapshot);
   } catch (err) {
     document.getElementById('stamp').textContent = 'no live snapshot';
     document.querySelector('main').innerHTML = `<div class="empty">No live snapshot exists yet. Run the GitHub Action or run <code>python scripts/update_live.py</code>. Error: ${esc(err.message)}</div>`;
   }
 }
 
-main();
+// Start initial render immediately.
+init();
+
+// Poll every 5 minutes for fresh data.
+// The GitHub Action runs hourly at minute 7; 5-min polling ensures
+// new data appears within ~5 minutes of commit — no page reload needed.
+setInterval(checkForUpdate, 5 * 60 * 1000);
