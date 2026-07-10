@@ -2,8 +2,6 @@ __pycache__/
 *.pyc
 .env
 .DS_Store
-public/data/snapshot.json
-public/data/evidence.json
-public/data/history.jsonl
+
 data/raw/
 data/backfill_sec_events.jsonl
