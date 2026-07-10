@@ -1,0 +1,387 @@
+{
+  "app_version": "2026-07-03-livefix6-strict-sec-evidence",
+  "feed_status": [
+    {
+      "detail": "downloaded",
+      "ok": true,
+      "source": "SEC company_tickers"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "WMT"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "TGT"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "COST"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "HD"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "LOW"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "M"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "KSS"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "BBY"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "AMZN"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "AAPL"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "MSFT"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "NVDA"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "TSLA"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "F"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "GM"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "JPM"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "BAC"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "C"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "XOM"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "CVX"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "DAL"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "UAL"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "FDX"
+    },
+    {
+      "ok": true,
+      "source": "SEC submissions",
+      "ticker": "UPS"
+    },
+    {
+      "detail": "GET JSON failed for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%28bankruptcy+OR+liquidation+OR+restructuring+OR+impairment+OR+%22strategic+alternatives%22+OR+%22store+closure%22+OR+layoffs+OR+%22guidance+cut%22+OR+%22withdraws+guidance%22+OR+%22weak+demand%22+OR+downgrade+OR+%22liquidity+concern%22+OR+%22margin+pressure%22+OR+expansion+OR+%22new+plant%22+OR+%22long-term+contract%22+OR+%22capacity+increase%22+OR+%22strategic+acquisition%22%29+%28company+OR+corporate+OR+retailer+OR+manufacturer+OR+bank+OR+airline+OR+market%29%29+OR+%28war+OR+invasion+OR+sanctions+OR+tariff+OR+%22export+controls%22+OR+blockade+OR+%22shipping+disruption%22+OR+%22military+escalation%22%29+OR+%28%22interest+rate+hike%22+OR+%22credit+crunch%22+OR+recession+OR+%22liquidity+stress%22+OR+%22default+risk%22+OR+%22debt+ceiling%22%29&mode=artlist&format=json&maxrecords=50&timespan=12h&sort=datedesc: non-JSON response; content_type='text/html; charset=utf-8'; snippet='Your query was too short or too long.'",
+      "ok": false,
+      "query": "corporate_geo_macro_combined",
+      "source": "GDELT DOC"
+    },
+    {
+      "observations": 399,
+      "ok": true,
+      "series": "DFF",
+      "source": "FRED"
+    },
+    {
+      "observations": 285,
+      "ok": true,
+      "series": "DGS10",
+      "source": "FRED"
+    },
+    {
+      "observations": 286,
+      "ok": true,
+      "series": "T10Y2Y",
+      "source": "FRED"
+    },
+    {
+      "observations": 290,
+      "ok": true,
+      "series": "BAMLH0A0HYM2",
+      "source": "FRED"
+    },
+    {
+      "observations": 57,
+      "ok": true,
+      "series": "NFCI",
+      "source": "FRED"
+    }
+  ],
+  "generated_at_utc": "2026-07-10T02:52:42Z",
+  "model_name": "market_horizon_radar_live_only_v2",
+  "narrative": {
+    "english": [
+      "Current phase is WARMUP (insufficient_live_corporate_evidence) with gated probability n/a and raw ungated pressure n/a. Confidence: 20.0%. Baseline status: insufficient_live_evidence.",
+      "Gate active: sync evidence 0 < required 4; corporate deformation evidence 0 < required 3; dust and defensive decay are both zero.",
+      "Raw ridge/dust balance: dust=0.00, decay=0.00, reach=0.00, geo=0.00, macro=0.36, sync=0.00."
+    ],
+    "math": {
+      "formula": "p = sigmoid(b0 + 0.90*dust_z + 0.70*decay_z + 0.55*sync_z + 0.35*geo_z + 0.30*macro_z - 0.50*reach_z)",
+      "interpretation": "Positive dust/decay/sync/geo/macro raises phase-transition pressure. Positive reach lowers it.",
+      "raw_indices": {
+        "corporate_deformation_count": 0.0,
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "evidence_count": 5.0,
+        "geo_vector": 0.0,
+        "macro_evidence_count": 5.0,
+        "macro_vector": 0.36,
+        "ridge_reach": 0.0,
+        "sync": 0.0,
+        "sync_evidence_count": 0.0
+      },
+      "z_indices": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.3075,
+        "ridge_reach": 0.0,
+        "sync": 0.0
+      }
+    }
+  },
+  "score": {
+    "baseline_status": "insufficient_live_evidence",
+    "confidence": 0.2,
+    "gate_reasons": [
+      "sync evidence 0 < required 4",
+      "corporate deformation evidence 0 < required 3",
+      "dust and defensive decay are both zero"
+    ],
+    "history_points": 0,
+    "history_rows_available": 1,
+    "linear_score": -0.2578,
+    "phase": "WARMUP",
+    "phase_label": "insufficient_live_corporate_evidence",
+    "probability": null,
+    "raw_indices": {
+      "corporate_deformation_count": 0.0,
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "evidence_count": 5.0,
+      "geo_vector": 0.0,
+      "macro_evidence_count": 5.0,
+      "macro_vector": 0.36,
+      "ridge_reach": 0.0,
+      "sync": 0.0,
+      "sync_evidence_count": 0.0
+    },
+    "raw_probability": null,
+    "raw_probability_probe": 0.4359,
+    "z_indices": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.3075,
+      "ridge_reach": 0.0,
+      "sync": 0.0
+    }
+  },
+  "source_counts": {
+    "by_class": {
+      "macro_vector": 5
+    },
+    "by_source_type": {
+      "macro_series": 5
+    },
+    "evidence_total": 5
+  },
+  "top_evidence": [
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.1200000000000001,
+        "ridge_reach": 0.0
+      },
+      "entity": "T10Y2Y",
+      "entity_name": "10-Year Minus 2-Year Treasury Spread",
+      "event_time_utc": "2026-07-09T00:00:00Z",
+      "id": "0324fad14960441d04bd60a1",
+      "metadata": {
+        "delta": 0.030000000000000027,
+        "latest": 0.38,
+        "series_id": "T10Y2Y"
+      },
+      "observed_at_utc": "2026-07-10T02:52:42Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.38, change +0.03",
+      "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.38, change +0.03",
+      "url": "https://fred.stlouisfed.org/series/T10Y2Y"
+    },
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.03999999999999915,
+        "ridge_reach": 0.0
+      },
+      "entity": "DFF",
+      "entity_name": "Effective Federal Funds Rate",
+      "event_time_utc": "2026-07-08T00:00:00Z",
+      "id": "a93162d39a17bc201d090586",
+      "metadata": {
+        "delta": -0.009999999999999787,
+        "latest": 3.62,
+        "series_id": "DFF"
+      },
+      "observed_at_utc": "2026-07-10T02:52:42Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "DFF Effective Federal Funds Rate latest 3.62, change -0.01",
+      "title": "DFF Effective Federal Funds Rate latest 3.62, change -0.01",
+      "url": "https://fred.stlouisfed.org/series/DFF"
+    },
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.03999999999999915,
+        "ridge_reach": 0.0
+      },
+      "entity": "DGS10",
+      "entity_name": "10-Year Treasury Constant Maturity Rate",
+      "event_time_utc": "2026-07-08T00:00:00Z",
+      "id": "530e6cd7ed4d425cd0350800",
+      "metadata": {
+        "delta": 0.009999999999999787,
+        "latest": 4.56,
+        "series_id": "DGS10"
+      },
+      "observed_at_utc": "2026-07-10T02:52:42Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.56, change +0.01",
+      "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.56, change +0.01",
+      "url": "https://fred.stlouisfed.org/series/DGS10"
+    },
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.120000000000001,
+        "ridge_reach": 0.0
+      },
+      "entity": "BAMLH0A0HYM2",
+      "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
+      "event_time_utc": "2026-07-08T00:00:00Z",
+      "id": "29e30f63efdf67bf8381f570",
+      "metadata": {
+        "delta": 0.03000000000000025,
+        "latest": 2.7,
+        "series_id": "BAMLH0A0HYM2"
+      },
+      "observed_at_utc": "2026-07-10T02:52:42Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.7, change +0.03",
+      "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.7, change +0.03",
+      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
+    },
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.040000000000000036,
+        "ridge_reach": 0.0
+      },
+      "entity": "NFCI",
+      "entity_name": "Chicago Fed National Financial Conditions Index",
+      "event_time_utc": "2026-07-03T00:00:00Z",
+      "id": "c87528afe50633890afd36a6",
+      "metadata": {
+        "delta": -0.010000000000000009,
+        "latest": -0.515,
+        "series_id": "NFCI"
+      },
+      "observed_at_utc": "2026-07-10T02:52:42Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.515, change -0.01",
+      "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.515, change -0.01",
+      "url": "https://fred.stlouisfed.org/series/NFCI"
+    }
+  ]
+}

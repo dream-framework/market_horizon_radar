@@ -1,0 +1,142 @@
+[
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.1200000000000001,
+      "ridge_reach": 0.0
+    },
+    "entity": "T10Y2Y",
+    "entity_name": "10-Year Minus 2-Year Treasury Spread",
+    "event_time_utc": "2026-07-09T00:00:00Z",
+    "id": "0324fad14960441d04bd60a1",
+    "metadata": {
+      "delta": 0.030000000000000027,
+      "latest": 0.38,
+      "series_id": "T10Y2Y"
+    },
+    "observed_at_utc": "2026-07-10T02:52:42Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.38, change +0.03",
+    "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.38, change +0.03",
+    "url": "https://fred.stlouisfed.org/series/T10Y2Y"
+  },
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.03999999999999915,
+      "ridge_reach": 0.0
+    },
+    "entity": "DFF",
+    "entity_name": "Effective Federal Funds Rate",
+    "event_time_utc": "2026-07-08T00:00:00Z",
+    "id": "a93162d39a17bc201d090586",
+    "metadata": {
+      "delta": -0.009999999999999787,
+      "latest": 3.62,
+      "series_id": "DFF"
+    },
+    "observed_at_utc": "2026-07-10T02:52:42Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "DFF Effective Federal Funds Rate latest 3.62, change -0.01",
+    "title": "DFF Effective Federal Funds Rate latest 3.62, change -0.01",
+    "url": "https://fred.stlouisfed.org/series/DFF"
+  },
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.03999999999999915,
+      "ridge_reach": 0.0
+    },
+    "entity": "DGS10",
+    "entity_name": "10-Year Treasury Constant Maturity Rate",
+    "event_time_utc": "2026-07-08T00:00:00Z",
+    "id": "530e6cd7ed4d425cd0350800",
+    "metadata": {
+      "delta": 0.009999999999999787,
+      "latest": 4.56,
+      "series_id": "DGS10"
+    },
+    "observed_at_utc": "2026-07-10T02:52:42Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.56, change +0.01",
+    "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.56, change +0.01",
+    "url": "https://fred.stlouisfed.org/series/DGS10"
+  },
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.120000000000001,
+      "ridge_reach": 0.0
+    },
+    "entity": "BAMLH0A0HYM2",
+    "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
+    "event_time_utc": "2026-07-08T00:00:00Z",
+    "id": "29e30f63efdf67bf8381f570",
+    "metadata": {
+      "delta": 0.03000000000000025,
+      "latest": 2.7,
+      "series_id": "BAMLH0A0HYM2"
+    },
+    "observed_at_utc": "2026-07-10T02:52:42Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.7, change +0.03",
+    "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.7, change +0.03",
+    "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
+  },
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.040000000000000036,
+      "ridge_reach": 0.0
+    },
+    "entity": "NFCI",
+    "entity_name": "Chicago Fed National Financial Conditions Index",
+    "event_time_utc": "2026-07-03T00:00:00Z",
+    "id": "c87528afe50633890afd36a6",
+    "metadata": {
+      "delta": -0.010000000000000009,
+      "latest": -0.515,
+      "series_id": "NFCI"
+    },
+    "observed_at_utc": "2026-07-10T02:52:42Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.515, change -0.01",
+    "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.515, change -0.01",
+    "url": "https://fred.stlouisfed.org/series/NFCI"
+  }
+]
