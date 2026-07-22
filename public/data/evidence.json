@@ -12,7 +12,7 @@
     },
     "entity": "FDX",
     "entity_name": "FEDEX CORP",
-    "event_time_utc": "2026-07-21T16:09:35Z",
+    "event_time_utc": "2026-07-21T20:09:35Z",
     "id": "d8d411503560a6179c60d50f",
     "metadata": {
       "accession": "0001048911-26-000108",
@@ -22,7 +22,7 @@
       "form": "8-K",
       "items": "2.02,9.01"
     },
-    "observed_at_utc": "2026-07-22T03:31:17Z",
+    "observed_at_utc": "2026-07-22T06:37:53Z",
     "sector": "logistics",
     "source": "SEC EDGAR submissions",
     "source_type": "sec_filing",
@@ -50,7 +50,7 @@
       "latest": 0.37,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-07-22T03:31:17Z",
+    "observed_at_utc": "2026-07-22T06:37:53Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -76,7 +76,7 @@
       "latest": 3.63,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-07-22T03:31:17Z",
+    "observed_at_utc": "2026-07-22T06:37:53Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -104,7 +104,7 @@
       "latest": 4.6,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-07-22T03:31:17Z",
+    "observed_at_utc": "2026-07-22T06:37:53Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -132,7 +132,7 @@
       "latest": 2.69,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-07-22T03:31:17Z",
+    "observed_at_utc": "2026-07-22T06:37:53Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -160,7 +160,7 @@
       "latest": -0.538,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-07-22T03:31:17Z",
+    "observed_at_utc": "2026-07-22T06:37:53Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
