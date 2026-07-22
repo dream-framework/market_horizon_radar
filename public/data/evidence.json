@@ -22,13 +22,67 @@
       "form": "8-K",
       "items": "2.02,9.01"
     },
-    "observed_at_utc": "2026-07-22T18:14:54Z",
+    "observed_at_utc": "2026-07-22T20:17:01Z",
     "sector": "logistics",
     "source": "SEC EDGAR submissions",
     "source_type": "sec_filing",
     "summary": "fdx-20260721 FALSE 0001048911 0001048911 2026-07-21 2026-07-21 0001048911 us-gaap:CommonStockMember 2026-07-21 2026-07-21 0001048911 fdx:OnePointSixTwoFivePercentageNotesDueTwoThousandTwentySevenMember 2026-07-21 2026-07-21 0001048911 fdx:ZeroPointFourFiveZeroPercentNotesDueTwentyTwentyNine29AMember 2026-07-21 2026-07-21 0001048911 fdx:ZeroPointFourFiveZeroP",
     "title": "FDX 8-K filed 2026-07-21",
     "url": "https://www.sec.gov/Archives/edgar/data/1048911/000104891126000108/fdx-20260721.htm"
+  },
+  {
+    "classes": [],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.0,
+      "ridge_reach": 0.0
+    },
+    "entity": "DFF",
+    "entity_name": "Effective Federal Funds Rate",
+    "event_time_utc": "2026-07-21T00:00:00Z",
+    "id": "d0ca5a3a896253509c8c6428",
+    "metadata": {
+      "delta": 0.0,
+      "latest": 3.63,
+      "series_id": "DFF"
+    },
+    "observed_at_utc": "2026-07-22T20:17:01Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "DFF Effective Federal Funds Rate latest 3.63, change +0",
+    "title": "DFF Effective Federal Funds Rate latest 3.63, change +0",
+    "url": "https://fred.stlouisfed.org/series/DFF"
+  },
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.120000000000001,
+      "ridge_reach": 0.0
+    },
+    "entity": "DGS10",
+    "entity_name": "10-Year Treasury Constant Maturity Rate",
+    "event_time_utc": "2026-07-21T00:00:00Z",
+    "id": "da7cd973cec82f7c39d1b5b1",
+    "metadata": {
+      "delta": 0.03000000000000025,
+      "latest": 4.63,
+      "series_id": "DGS10"
+    },
+    "observed_at_utc": "2026-07-22T20:17:01Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.63, change +0.03",
+    "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.63, change +0.03",
+    "url": "https://fred.stlouisfed.org/series/DGS10"
   },
   {
     "classes": [
@@ -50,7 +104,7 @@
       "latest": 0.37,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-07-22T18:14:54Z",
+    "observed_at_utc": "2026-07-22T20:17:01Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -76,67 +130,13 @@
       "latest": 2.69,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-07-22T18:14:54Z",
+    "observed_at_utc": "2026-07-22T20:17:01Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
     "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.69, change +0",
     "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.69, change +0",
     "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
-  },
-  {
-    "classes": [],
-    "classification": {
-      "defensive_decay": 0.0,
-      "dust_cloud": 0.0,
-      "geo_vector": 0.0,
-      "macro_vector": 0.0,
-      "ridge_reach": 0.0
-    },
-    "entity": "DFF",
-    "entity_name": "Effective Federal Funds Rate",
-    "event_time_utc": "2026-07-20T00:00:00Z",
-    "id": "422f80441ef10173d94d7de8",
-    "metadata": {
-      "delta": 0.0,
-      "latest": 3.63,
-      "series_id": "DFF"
-    },
-    "observed_at_utc": "2026-07-22T18:14:54Z",
-    "sector": "macro",
-    "source": "FRED",
-    "source_type": "macro_series",
-    "summary": "DFF Effective Federal Funds Rate latest 3.63, change +0",
-    "title": "DFF Effective Federal Funds Rate latest 3.63, change +0",
-    "url": "https://fred.stlouisfed.org/series/DFF"
-  },
-  {
-    "classes": [
-      "macro_vector"
-    ],
-    "classification": {
-      "defensive_decay": 0.0,
-      "dust_cloud": 0.0,
-      "geo_vector": 0.0,
-      "macro_vector": 0.1999999999999993,
-      "ridge_reach": 0.0
-    },
-    "entity": "DGS10",
-    "entity_name": "10-Year Treasury Constant Maturity Rate",
-    "event_time_utc": "2026-07-20T00:00:00Z",
-    "id": "202c28165bfca95f4f887ac2",
-    "metadata": {
-      "delta": 0.04999999999999982,
-      "latest": 4.6,
-      "series_id": "DGS10"
-    },
-    "observed_at_utc": "2026-07-22T18:14:54Z",
-    "sector": "macro",
-    "source": "FRED",
-    "source_type": "macro_series",
-    "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.6, change +0.05",
-    "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.6, change +0.05",
-    "url": "https://fred.stlouisfed.org/series/DGS10"
   },
   {
     "classes": [
@@ -158,7 +158,7 @@
       "latest": -0.552,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-07-22T18:14:54Z",
+    "observed_at_utc": "2026-07-22T20:17:01Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
