@@ -19,7 +19,7 @@
       "latest": 0.52,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-08-19T17:32:54Z",
+    "observed_at_utc": "2026-08-19T18:45:34Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -47,7 +47,7 @@
       "latest": 2.75,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-08-19T17:32:54Z",
+    "observed_at_utc": "2026-08-19T18:45:34Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -73,7 +73,7 @@
       "latest": 3.63,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-08-19T17:32:54Z",
+    "observed_at_utc": "2026-08-19T18:45:34Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -101,7 +101,7 @@
       "latest": 4.72,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-08-19T17:32:54Z",
+    "observed_at_utc": "2026-08-19T18:45:34Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -129,7 +129,7 @@
       "latest": -0.559,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-08-19T17:32:54Z",
+    "observed_at_utc": "2026-08-19T18:45:34Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
