@@ -1,5 +1,33 @@
 [
   {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.15999999999999992,
+      "ridge_reach": 0.0
+    },
+    "entity": "T10Y2Y",
+    "entity_name": "10-Year Minus 2-Year Treasury Spread",
+    "event_time_utc": "2026-08-24T00:00:00Z",
+    "id": "6a1a205c1043079d951e407e",
+    "metadata": {
+      "delta": -0.03999999999999998,
+      "latest": 0.46,
+      "series_id": "T10Y2Y"
+    },
+    "observed_at_utc": "2026-08-24T21:36:24Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.46, change -0.04",
+    "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.46, change -0.04",
+    "url": "https://fred.stlouisfed.org/series/T10Y2Y"
+  },
+  {
     "classes": [],
     "classification": {
       "defensive_decay": 0.0,
@@ -17,7 +45,7 @@
       "latest": 3.63,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-08-24T20:39:04Z",
+    "observed_at_utc": "2026-08-24T21:36:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -45,39 +73,13 @@
       "latest": 4.74,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-08-24T20:39:04Z",
+    "observed_at_utc": "2026-08-24T21:36:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
     "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.74, change +0.05",
     "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.74, change +0.05",
     "url": "https://fred.stlouisfed.org/series/DGS10"
-  },
-  {
-    "classes": [],
-    "classification": {
-      "defensive_decay": 0.0,
-      "dust_cloud": 0.0,
-      "geo_vector": 0.0,
-      "macro_vector": 0.0,
-      "ridge_reach": 0.0
-    },
-    "entity": "T10Y2Y",
-    "entity_name": "10-Year Minus 2-Year Treasury Spread",
-    "event_time_utc": "2026-08-21T00:00:00Z",
-    "id": "fd87e0114f95a3574a206950",
-    "metadata": {
-      "delta": 0.0,
-      "latest": 0.5,
-      "series_id": "T10Y2Y"
-    },
-    "observed_at_utc": "2026-08-24T20:39:04Z",
-    "sector": "macro",
-    "source": "FRED",
-    "source_type": "macro_series",
-    "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.5, change +0",
-    "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.5, change +0",
-    "url": "https://fred.stlouisfed.org/series/T10Y2Y"
   },
   {
     "classes": [
@@ -99,7 +101,7 @@
       "latest": 2.7,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-08-24T20:39:04Z",
+    "observed_at_utc": "2026-08-24T21:36:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -127,7 +129,7 @@
       "latest": -0.559,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-08-24T20:39:04Z",
+    "observed_at_utc": "2026-08-24T21:36:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
