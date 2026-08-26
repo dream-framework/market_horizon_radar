@@ -19,7 +19,7 @@
       "latest": 0.47,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-08-26T11:36:52Z",
+    "observed_at_utc": "2026-08-26T13:07:02Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -45,7 +45,7 @@
       "latest": 3.63,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-08-26T11:36:52Z",
+    "observed_at_utc": "2026-08-26T13:07:02Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -73,7 +73,7 @@
       "latest": 4.7,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-08-26T11:36:52Z",
+    "observed_at_utc": "2026-08-26T13:07:02Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -101,7 +101,7 @@
       "latest": 2.69,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-08-26T11:36:52Z",
+    "observed_at_utc": "2026-08-26T13:07:02Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -117,24 +117,24 @@
       "defensive_decay": 0.0,
       "dust_cloud": 0.0,
       "geo_vector": 0.0,
-      "macro_vector": 0.016000000000000014,
+      "macro_vector": 0.019999999999999574,
       "ridge_reach": 0.0
     },
     "entity": "NFCI",
     "entity_name": "Chicago Fed National Financial Conditions Index",
-    "event_time_utc": "2026-08-14T00:00:00Z",
-    "id": "82d289ccc2c569a862eeed36",
+    "event_time_utc": "2026-08-21T00:00:00Z",
+    "id": "e9f5b52347ad1b6e8cbbebdd",
     "metadata": {
-      "delta": -0.0040000000000000036,
-      "latest": -0.559,
+      "delta": -0.004999999999999893,
+      "latest": -0.566,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-08-26T11:36:52Z",
+    "observed_at_utc": "2026-08-26T13:07:02Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
-    "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.559, change -0.004",
-    "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.559, change -0.004",
+    "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.566, change -0.005",
+    "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.566, change -0.005",
     "url": "https://fred.stlouisfed.org/series/NFCI"
   }
 ]
