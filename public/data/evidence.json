@@ -19,13 +19,41 @@
       "latest": 0.27,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-09-17T13:20:42Z",
+    "observed_at_utc": "2026-09-17T18:07:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
     "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.27, change -0.06",
     "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.27, change -0.06",
     "url": "https://fred.stlouisfed.org/series/T10Y2Y"
+  },
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
+      "macro_vector": 0.23999999999999844,
+      "ridge_reach": 0.0
+    },
+    "entity": "BAMLH0A0HYM2",
+    "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
+    "event_time_utc": "2026-09-16T00:00:00Z",
+    "id": "ac1d3fc391d8deaec5aa5e2a",
+    "metadata": {
+      "delta": -0.05999999999999961,
+      "latest": 2.7,
+      "series_id": "BAMLH0A0HYM2"
+    },
+    "observed_at_utc": "2026-09-17T18:07:24Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.7, change -0.06",
+    "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.7, change -0.06",
+    "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
   },
   {
     "classes": [],
@@ -45,7 +73,7 @@
       "latest": 3.63,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-09-17T13:20:42Z",
+    "observed_at_utc": "2026-09-17T18:07:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -73,41 +101,13 @@
       "latest": 5.0,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-09-17T13:20:42Z",
+    "observed_at_utc": "2026-09-17T18:07:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
     "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 5, change +0.03",
     "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 5, change +0.03",
     "url": "https://fred.stlouisfed.org/series/DGS10"
-  },
-  {
-    "classes": [
-      "macro_vector"
-    ],
-    "classification": {
-      "defensive_decay": 0.0,
-      "dust_cloud": 0.0,
-      "geo_vector": 0.0,
-      "macro_vector": 0.1999999999999993,
-      "ridge_reach": 0.0
-    },
-    "entity": "BAMLH0A0HYM2",
-    "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
-    "event_time_utc": "2026-09-15T00:00:00Z",
-    "id": "4f0544e774f97d8036e0f002",
-    "metadata": {
-      "delta": 0.04999999999999982,
-      "latest": 2.76,
-      "series_id": "BAMLH0A0HYM2"
-    },
-    "observed_at_utc": "2026-09-17T13:20:42Z",
-    "sector": "macro",
-    "source": "FRED",
-    "source_type": "macro_series",
-    "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.76, change +0.05",
-    "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 2.76, change +0.05",
-    "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
   },
   {
     "classes": [
@@ -129,7 +129,7 @@
       "latest": -0.56,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-09-17T13:20:42Z",
+    "observed_at_utc": "2026-09-17T18:07:24Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
