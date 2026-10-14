@@ -127,7 +127,7 @@
       "ticker": "UPS"
     },
     {
-      "detail": "GET JSON failed for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%28bankruptcy+OR+liquidation+OR+restructuring+OR+impairment+OR+%22strategic+alternatives%22+OR+%22store+closure%22+OR+layoffs+OR+%22guidance+cut%22+OR+%22withdraws+guidance%22+OR+%22weak+demand%22+OR+downgrade+OR+%22liquidity+concern%22+OR+%22margin+pressure%22+OR+expansion+OR+%22new+plant%22+OR+%22long-term+contract%22+OR+%22capacity+increase%22+OR+%22strategic+acquisition%22%29+%28company+OR+corporate+OR+retailer+OR+manufacturer+OR+bank+OR+airline+OR+market%29%29+OR+%28war+OR+invasion+OR+sanctions+OR+tariff+OR+%22export+controls%22+OR+blockade+OR+%22shipping+disruption%22+OR+%22military+escalation%22%29+OR+%28%22interest+rate+hike%22+OR+%22credit+crunch%22+OR+recession+OR+%22liquidity+stress%22+OR+%22default+risk%22+OR+%22debt+ceiling%22%29&mode=artlist&format=json&maxrecords=50&timespan=12h&sort=datedesc: non-JSON response; content_type='text/html; charset=utf-8'; snippet='Your query was too short or too long.'",
+      "detail": "GET JSON failed for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%28bankruptcy+OR+liquidation+OR+restructuring+OR+impairment+OR+%22strategic+alternatives%22+OR+%22store+closure%22+OR+layoffs+OR+%22guidance+cut%22+OR+%22withdraws+guidance%22+OR+%22weak+demand%22+OR+downgrade+OR+%22liquidity+concern%22+OR+%22margin+pressure%22+OR+expansion+OR+%22new+plant%22+OR+%22long-term+contract%22+OR+%22capacity+increase%22+OR+%22strategic+acquisition%22%29+%28company+OR+corporate+OR+retailer+OR+manufacturer+OR+bank+OR+airline+OR+market%29%29+OR+%28war+OR+invasion+OR+sanctions+OR+tariff+OR+%22export+controls%22+OR+blockade+OR+%22shipping+disruption%22+OR+%22military+escalation%22%29+OR+%28%22interest+rate+hike%22+OR+%22credit+crunch%22+OR+recession+OR+%22liquidity+stress%22+OR+%22default+risk%22+OR+%22debt+ceiling%22%29&mode=artlist&format=json&maxrecords=50&timespan=12h&sort=datedesc: HTTP Error 429: Too Many Requests",
       "ok": false,
       "query": "corporate_geo_macro_combined",
       "source": "GDELT DOC"
@@ -145,7 +145,7 @@
       "source": "FRED"
     },
     {
-      "observations": 286,
+      "observations": 287,
       "ok": true,
       "series": "T10Y2Y",
       "source": "FRED"
@@ -163,13 +163,13 @@
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-14T20:32:52Z",
+  "generated_at_utc": "2026-10-14T23:50:21Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
       "Current phase is WARMUP (insufficient_live_corporate_evidence) with gated probability n/a and raw ungated pressure n/a. Confidence: 20.0%. Baseline status: insufficient_live_evidence.",
       "Gate active: sync evidence 0 < required 4; corporate deformation evidence 0 < required 3; dust and defensive decay are both zero.",
-      "Raw ridge/dust balance: dust=0.00, decay=0.00, reach=0.00, geo=0.00, macro=0.46, sync=0.00."
+      "Raw ridge/dust balance: dust=0.00, decay=0.00, reach=0.00, geo=0.00, macro=0.58, sync=0.00."
     ],
     "math": {
       "formula": "p = sigmoid(b0 + 0.90*dust_z + 0.70*decay_z + 0.55*sync_z + 0.35*geo_z + 0.30*macro_z - 0.50*reach_z)",
@@ -181,7 +181,7 @@
         "evidence_count": 5.0,
         "geo_vector": 0.0,
         "macro_evidence_count": 5.0,
-        "macro_vector": 0.464,
+        "macro_vector": 0.584,
         "ridge_reach": 0.0,
         "sync": 0.0,
         "sync_evidence_count": 0.0
@@ -190,7 +190,7 @@
         "defensive_decay": 0.0,
         "dust_cloud": 0.0,
         "geo_vector": 0.0,
-        "macro_vector": 0.1674,
+        "macro_vector": 0.6722,
         "ridge_reach": 0.0,
         "sync": 0.0
       }
@@ -206,7 +206,7 @@
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": -0.2998,
+    "linear_score": -0.1483,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
@@ -217,18 +217,18 @@
       "evidence_count": 5.0,
       "geo_vector": 0.0,
       "macro_evidence_count": 5.0,
-      "macro_vector": 0.464,
+      "macro_vector": 0.584,
       "ridge_reach": 0.0,
       "sync": 0.0,
       "sync_evidence_count": 0.0
     },
     "raw_probability": null,
-    "raw_probability_probe": 0.4256,
+    "raw_probability_probe": 0.463,
     "z_indices": {
       "defensive_decay": 0.0,
       "dust_cloud": 0.0,
       "geo_vector": 0.0,
-      "macro_vector": 0.1674,
+      "macro_vector": 0.6722,
       "ridge_reach": 0.0,
       "sync": 0.0
     }
@@ -243,6 +243,34 @@
     "evidence_total": 5
   },
   "top_evidence": [
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.19999999999999996,
+        "ridge_reach": 0.0
+      },
+      "entity": "T10Y2Y",
+      "entity_name": "10-Year Minus 2-Year Treasury Spread",
+      "event_time_utc": "2026-10-14T00:00:00Z",
+      "id": "1ba7748165d38e07129ef717",
+      "metadata": {
+        "delta": -0.04999999999999999,
+        "latest": 0.37,
+        "series_id": "T10Y2Y"
+      },
+      "observed_at_utc": "2026-10-14T23:50:21Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.37, change -0.05",
+      "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.37, change -0.05",
+      "url": "https://fred.stlouisfed.org/series/T10Y2Y"
+    },
     {
       "classes": [],
       "classification": {
@@ -261,7 +289,7 @@
         "latest": 3.88,
         "series_id": "DFF"
       },
-      "observed_at_utc": "2026-10-14T20:32:52Z",
+      "observed_at_utc": "2026-10-14T23:50:21Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -289,41 +317,13 @@
         "latest": 5.21,
         "series_id": "DGS10"
       },
-      "observed_at_utc": "2026-10-14T20:32:52Z",
+      "observed_at_utc": "2026-10-14T23:50:21Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
       "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 5.21, change -0.03",
       "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 5.21, change -0.03",
       "url": "https://fred.stlouisfed.org/series/DGS10"
-    },
-    {
-      "classes": [
-        "macro_vector"
-      ],
-      "classification": {
-        "defensive_decay": 0.0,
-        "dust_cloud": 0.0,
-        "geo_vector": 0.0,
-        "macro_vector": 0.08000000000000007,
-        "ridge_reach": 0.0
-      },
-      "entity": "T10Y2Y",
-      "entity_name": "10-Year Minus 2-Year Treasury Spread",
-      "event_time_utc": "2026-10-13T00:00:00Z",
-      "id": "da3e55284f34f420d188c5cf",
-      "metadata": {
-        "delta": -0.020000000000000018,
-        "latest": 0.42,
-        "series_id": "T10Y2Y"
-      },
-      "observed_at_utc": "2026-10-14T20:32:52Z",
-      "sector": "macro",
-      "source": "FRED",
-      "source_type": "macro_series",
-      "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.42, change -0.02",
-      "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.42, change -0.02",
-      "url": "https://fred.stlouisfed.org/series/T10Y2Y"
     },
     {
       "classes": [
@@ -345,7 +345,7 @@
         "latest": 3.16,
         "series_id": "BAMLH0A0HYM2"
       },
-      "observed_at_utc": "2026-10-14T20:32:52Z",
+      "observed_at_utc": "2026-10-14T23:50:21Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -373,7 +373,7 @@
         "latest": -0.494,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-14T20:32:52Z",
+      "observed_at_utc": "2026-10-14T23:50:21Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
