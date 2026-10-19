@@ -127,13 +127,13 @@
       "ticker": "UPS"
     },
     {
-      "detail": "GET JSON failed for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%28bankruptcy+OR+liquidation+OR+restructuring+OR+impairment+OR+%22strategic+alternatives%22+OR+%22store+closure%22+OR+layoffs+OR+%22guidance+cut%22+OR+%22withdraws+guidance%22+OR+%22weak+demand%22+OR+downgrade+OR+%22liquidity+concern%22+OR+%22margin+pressure%22+OR+expansion+OR+%22new+plant%22+OR+%22long-term+contract%22+OR+%22capacity+increase%22+OR+%22strategic+acquisition%22%29+%28company+OR+corporate+OR+retailer+OR+manufacturer+OR+bank+OR+airline+OR+market%29%29+OR+%28war+OR+invasion+OR+sanctions+OR+tariff+OR+%22export+controls%22+OR+blockade+OR+%22shipping+disruption%22+OR+%22military+escalation%22%29+OR+%28%22interest+rate+hike%22+OR+%22credit+crunch%22+OR+recession+OR+%22liquidity+stress%22+OR+%22default+risk%22+OR+%22debt+ceiling%22%29&mode=artlist&format=json&maxrecords=50&timespan=12h&sort=datedesc: non-JSON response; content_type='text/html; charset=utf-8'; snippet='Your query was too short or too long.'",
+      "detail": "GET JSON failed for https://api.gdeltproject.org/api/v2/doc/doc?query=%28%28bankruptcy+OR+liquidation+OR+restructuring+OR+impairment+OR+%22strategic+alternatives%22+OR+%22store+closure%22+OR+layoffs+OR+%22guidance+cut%22+OR+%22withdraws+guidance%22+OR+%22weak+demand%22+OR+downgrade+OR+%22liquidity+concern%22+OR+%22margin+pressure%22+OR+expansion+OR+%22new+plant%22+OR+%22long-term+contract%22+OR+%22capacity+increase%22+OR+%22strategic+acquisition%22%29+%28company+OR+corporate+OR+retailer+OR+manufacturer+OR+bank+OR+airline+OR+market%29%29+OR+%28war+OR+invasion+OR+sanctions+OR+tariff+OR+%22export+controls%22+OR+blockade+OR+%22shipping+disruption%22+OR+%22military+escalation%22%29+OR+%28%22interest+rate+hike%22+OR+%22credit+crunch%22+OR+recession+OR+%22liquidity+stress%22+OR+%22default+risk%22+OR+%22debt+ceiling%22%29&mode=artlist&format=json&maxrecords=50&timespan=12h&sort=datedesc: HTTP Error 429: Too Many Requests",
       "ok": false,
       "query": "corporate_geo_macro_combined",
       "source": "GDELT DOC"
     },
     {
-      "observations": 398,
+      "observations": 397,
       "ok": true,
       "series": "DFF",
       "source": "FRED"
@@ -163,7 +163,7 @@
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-18T22:58:19Z",
+  "generated_at_utc": "2026-10-19T01:01:32Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
@@ -190,7 +190,7 @@
         "defensive_decay": 0.0,
         "dust_cloud": 0.0,
         "geo_vector": 0.0,
-        "macro_vector": 0.5028,
+        "macro_vector": 0.5013,
         "ridge_reach": 0.0,
         "sync": 0.0
       }
@@ -206,7 +206,7 @@
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": -0.1992,
+    "linear_score": -0.1996,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
@@ -223,12 +223,12 @@
       "sync_evidence_count": 0.0
     },
     "raw_probability": null,
-    "raw_probability_probe": 0.4504,
+    "raw_probability_probe": 0.4503,
     "z_indices": {
       "defensive_decay": 0.0,
       "dust_cloud": 0.0,
       "geo_vector": 0.0,
-      "macro_vector": 0.5028,
+      "macro_vector": 0.5013,
       "ridge_reach": 0.0,
       "sync": 0.0
     }
@@ -263,7 +263,7 @@
         "latest": 0.35,
         "series_id": "T10Y2Y"
       },
-      "observed_at_utc": "2026-10-18T22:58:19Z",
+      "observed_at_utc": "2026-10-19T01:01:32Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -289,7 +289,7 @@
         "latest": 3.88,
         "series_id": "DFF"
       },
-      "observed_at_utc": "2026-10-18T22:58:19Z",
+      "observed_at_utc": "2026-10-19T01:01:32Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -317,7 +317,7 @@
         "latest": 5.1,
         "series_id": "DGS10"
       },
-      "observed_at_utc": "2026-10-18T22:58:19Z",
+      "observed_at_utc": "2026-10-19T01:01:32Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -345,7 +345,7 @@
         "latest": 3.23,
         "series_id": "BAMLH0A0HYM2"
       },
-      "observed_at_utc": "2026-10-18T22:58:19Z",
+      "observed_at_utc": "2026-10-19T01:01:32Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -373,7 +373,7 @@
         "latest": -0.499,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-18T22:58:19Z",
+      "observed_at_utc": "2026-10-19T01:01:32Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
