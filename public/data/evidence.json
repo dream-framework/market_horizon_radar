@@ -22,7 +22,7 @@
       "form": "8-K",
       "items": "3.03,5.03,8.01,9.01"
     },
-    "observed_at_utc": "2026-10-25T18:52:11Z",
+    "observed_at_utc": "2026-10-25T21:37:42Z",
     "sector": "banks",
     "source": "SEC EDGAR submissions",
     "source_type": "sec_filing",
@@ -48,7 +48,7 @@
       "latest": 0.31,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-10-25T18:52:11Z",
+    "observed_at_utc": "2026-10-25T21:37:42Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -74,7 +74,7 @@
       "latest": 3.88,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-10-25T18:52:11Z",
+    "observed_at_utc": "2026-10-25T21:37:42Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -102,7 +102,7 @@
       "latest": 4.96,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-10-25T18:52:11Z",
+    "observed_at_utc": "2026-10-25T21:37:42Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -130,7 +130,7 @@
       "latest": 3.4,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-10-25T18:52:11Z",
+    "observed_at_utc": "2026-10-25T21:37:42Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -158,7 +158,7 @@
       "latest": -0.496,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-10-25T18:52:11Z",
+    "observed_at_utc": "2026-10-25T21:37:42Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
