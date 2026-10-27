@@ -163,36 +163,37 @@
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-27T07:39:20Z",
+  "generated_at_utc": "2026-10-27T14:19:23Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
       "Current phase is WARMUP (insufficient_live_corporate_evidence) with gated probability n/a and raw ungated pressure n/a. Confidence: 20.0%. Baseline status: insufficient_live_evidence.",
-      "Gate active: sync evidence 0 < required 4; corporate deformation evidence 0 < required 3; dust and defensive decay are both zero.",
-      "Raw ridge/dust balance: dust=0.00, decay=0.00, reach=0.00, geo=0.00, macro=0.30, sync=0.00."
+      "Gate active: sync evidence 1 < required 4; corporate deformation evidence 1 < required 3.",
+      "Raw ridge/dust balance: dust=2.40, decay=2.60, reach=0.00, geo=0.00, macro=0.30, sync=2.08.",
+      "Top deformation evidence: GM 8-K filed 2026-10-27; GM 8-K filed 2026-10-27"
     ],
     "math": {
       "formula": "p = sigmoid(b0 + 0.90*dust_z + 0.70*decay_z + 0.55*sync_z + 0.35*geo_z + 0.30*macro_z - 0.50*reach_z)",
       "interpretation": "Positive dust/decay/sync/geo/macro raises phase-transition pressure. Positive reach lowers it.",
       "raw_indices": {
-        "corporate_deformation_count": 0.0,
-        "defensive_decay": 0.0,
-        "dust_cloud": 0.0,
-        "evidence_count": 5.0,
+        "corporate_deformation_count": 1.0,
+        "defensive_decay": 2.6,
+        "dust_cloud": 2.4,
+        "evidence_count": 6.0,
         "geo_vector": 0.0,
         "macro_evidence_count": 5.0,
         "macro_vector": 0.304,
         "ridge_reach": 0.0,
-        "sync": 0.0,
-        "sync_evidence_count": 0.0
+        "sync": 2.0794,
+        "sync_evidence_count": 1.0
       },
       "z_indices": {
-        "defensive_decay": 0.0,
-        "dust_cloud": -0.1601,
+        "defensive_decay": 2.6,
+        "dust_cloud": 6.8273,
         "geo_vector": 0.0,
-        "macro_vector": -0.5444,
+        "macro_vector": -0.5458,
         "ridge_reach": 0.0,
-        "sync": -0.1601
+        "sync": 6.2451
       }
     }
   },
@@ -200,49 +201,83 @@
     "baseline_status": "insufficient_live_evidence",
     "confidence": 0.2,
     "gate_reasons": [
-      "sync evidence 0 < required 4",
-      "corporate deformation evidence 0 < required 3",
-      "dust and defensive decay are both zero"
+      "sync evidence 1 < required 4",
+      "corporate deformation evidence 1 < required 3"
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": -0.7455,
+    "linear_score": 10.8856,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
     "raw_indices": {
-      "corporate_deformation_count": 0.0,
-      "defensive_decay": 0.0,
-      "dust_cloud": 0.0,
-      "evidence_count": 5.0,
+      "corporate_deformation_count": 1.0,
+      "defensive_decay": 2.6,
+      "dust_cloud": 2.4,
+      "evidence_count": 6.0,
       "geo_vector": 0.0,
       "macro_evidence_count": 5.0,
       "macro_vector": 0.304,
       "ridge_reach": 0.0,
-      "sync": 0.0,
-      "sync_evidence_count": 0.0
+      "sync": 2.0794,
+      "sync_evidence_count": 1.0
     },
     "raw_probability": null,
-    "raw_probability_probe": 0.3218,
+    "raw_probability_probe": 1.0,
     "z_indices": {
-      "defensive_decay": 0.0,
-      "dust_cloud": -0.1601,
+      "defensive_decay": 2.6,
+      "dust_cloud": 6.8273,
       "geo_vector": 0.0,
-      "macro_vector": -0.5444,
+      "macro_vector": -0.5458,
       "ridge_reach": 0.0,
-      "sync": -0.1601
+      "sync": 6.2451
     }
   },
   "source_counts": {
     "by_class": {
+      "defensive_decay": 1,
+      "dust_cloud": 1,
       "macro_vector": 4
     },
     "by_source_type": {
-      "macro_series": 5
+      "macro_series": 5,
+      "sec_filing": 1
     },
-    "evidence_total": 5
+    "evidence_total": 6
   },
   "top_evidence": [
+    {
+      "classes": [
+        "dust_cloud",
+        "defensive_decay"
+      ],
+      "classification": {
+        "defensive_decay": 2.6,
+        "dust_cloud": 2.4,
+        "geo_vector": 0.0,
+        "macro_vector": 0.0,
+        "ridge_reach": 0.0
+      },
+      "entity": "GM",
+      "entity_name": "General Motors Co",
+      "event_time_utc": "2026-10-27T10:30:05Z",
+      "id": "d292918e08270361c6cca364",
+      "metadata": {
+        "accession": "0001193125-26-432602",
+        "classification_basis": [
+          "SEC material item 3.01"
+        ],
+        "form": "8-K",
+        "items": "3.01,5.03,7.01,9.01"
+      },
+      "observed_at_utc": "2026-10-27T14:19:23Z",
+      "sector": "autos",
+      "source": "SEC EDGAR submissions",
+      "source_type": "sec_filing",
+      "summary": "8-K General Motors Co false 0001467858 --12-31 0001467858 2026-10-26 2026-10-26 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 8-K CURRENT REPORT Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934 Date of Report (Date of earliest event reported): October 26, 2026 GENERAL MOTORS COMPANY (Exact name of registra",
+      "title": "GM 8-K filed 2026-10-27",
+      "url": "https://www.sec.gov/Archives/edgar/data/1467858/000119312526432602/d53522d8k.htm"
+    },
     {
       "classes": [
         "macro_vector"
@@ -263,7 +298,7 @@
         "latest": 0.32,
         "series_id": "T10Y2Y"
       },
-      "observed_at_utc": "2026-10-27T07:39:20Z",
+      "observed_at_utc": "2026-10-27T14:19:23Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -289,7 +324,7 @@
         "latest": 3.88,
         "series_id": "DFF"
       },
-      "observed_at_utc": "2026-10-27T07:39:20Z",
+      "observed_at_utc": "2026-10-27T14:19:23Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -317,7 +352,7 @@
         "latest": 5.0,
         "series_id": "DGS10"
       },
-      "observed_at_utc": "2026-10-27T07:39:20Z",
+      "observed_at_utc": "2026-10-27T14:19:23Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -345,7 +380,7 @@
         "latest": 3.38,
         "series_id": "BAMLH0A0HYM2"
       },
-      "observed_at_utc": "2026-10-27T07:39:20Z",
+      "observed_at_utc": "2026-10-27T14:19:23Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -373,7 +408,7 @@
         "latest": -0.496,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-27T07:39:20Z",
+      "observed_at_utc": "2026-10-27T14:19:23Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
