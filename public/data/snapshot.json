@@ -133,25 +133,25 @@
       "source": "GDELT DOC"
     },
     {
-      "observations": 400,
+      "observations": 399,
       "ok": true,
       "series": "DFF",
       "source": "FRED"
     },
     {
-      "observations": 286,
+      "observations": 285,
       "ok": true,
       "series": "DGS10",
       "source": "FRED"
     },
     {
-      "observations": 287,
+      "observations": 286,
       "ok": true,
       "series": "T10Y2Y",
       "source": "FRED"
     },
     {
-      "observations": 290,
+      "observations": 289,
       "ok": true,
       "series": "BAMLH0A0HYM2",
       "source": "FRED"
@@ -163,7 +163,7 @@
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-27T23:40:16Z",
+  "generated_at_utc": "2026-10-28T05:21:31Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
@@ -188,12 +188,12 @@
         "sync_evidence_count": 1.0
       },
       "z_indices": {
-        "defensive_decay": 18.9473,
-        "dust_cloud": 6.4071,
+        "defensive_decay": 15.4596,
+        "dust_cloud": 6.2233,
         "geo_vector": 0.0,
-        "macro_vector": 0.0478,
+        "macro_vector": 0.0461,
         "ridge_reach": 0.0,
-        "sync": 5.9162
+        "sync": 5.7695
       }
     }
   },
@@ -206,7 +206,7 @@
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": 21.9477,
+    "linear_score": 19.2598,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
@@ -225,12 +225,12 @@
     "raw_probability": null,
     "raw_probability_probe": 1.0,
     "z_indices": {
-      "defensive_decay": 18.9473,
-      "dust_cloud": 6.4071,
+      "defensive_decay": 15.4596,
+      "dust_cloud": 6.2233,
       "geo_vector": 0.0,
-      "macro_vector": 0.0478,
+      "macro_vector": 0.0461,
       "ridge_reach": 0.0,
-      "sync": 5.9162
+      "sync": 5.7695
     }
   },
   "source_counts": {
@@ -270,7 +270,7 @@
         "form": "8-K",
         "items": "3.01,5.03,7.01,9.01"
       },
-      "observed_at_utc": "2026-10-27T23:40:16Z",
+      "observed_at_utc": "2026-10-28T05:21:31Z",
       "sector": "autos",
       "source": "SEC EDGAR submissions",
       "source_type": "sec_filing",
@@ -298,7 +298,7 @@
         "latest": 0.29,
         "series_id": "T10Y2Y"
       },
-      "observed_at_utc": "2026-10-27T23:40:16Z",
+      "observed_at_utc": "2026-10-28T05:21:31Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -324,7 +324,7 @@
         "latest": 3.88,
         "series_id": "DFF"
       },
-      "observed_at_utc": "2026-10-27T23:40:16Z",
+      "observed_at_utc": "2026-10-28T05:21:31Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -350,7 +350,7 @@
         "latest": 5.0,
         "series_id": "DGS10"
       },
-      "observed_at_utc": "2026-10-27T23:40:16Z",
+      "observed_at_utc": "2026-10-28T05:21:31Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -378,7 +378,7 @@
         "latest": 3.3,
         "series_id": "BAMLH0A0HYM2"
       },
-      "observed_at_utc": "2026-10-27T23:40:16Z",
+      "observed_at_utc": "2026-10-28T05:21:31Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -406,7 +406,7 @@
         "latest": -0.496,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-27T23:40:16Z",
+      "observed_at_utc": "2026-10-28T05:21:31Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
