@@ -157,19 +157,19 @@
       "source": "FRED"
     },
     {
-      "observations": 56,
+      "observations": 57,
       "ok": true,
       "series": "NFCI",
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-28T05:21:31Z",
+  "generated_at_utc": "2026-10-28T12:37:52Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
       "Current phase is WARMUP (insufficient_live_corporate_evidence) with gated probability n/a and raw ungated pressure n/a. Confidence: 20.0%. Baseline status: insufficient_live_evidence.",
       "Gate active: sync evidence 1 < required 4; corporate deformation evidence 1 < required 3.",
-      "Raw ridge/dust balance: dust=2.40, decay=2.60, reach=0.00, geo=0.00, macro=0.46, sync=2.08.",
+      "Raw ridge/dust balance: dust=2.40, decay=2.60, reach=0.00, geo=0.00, macro=0.47, sync=2.08.",
       "Top deformation evidence: GM 8-K filed 2026-10-27; GM 8-K filed 2026-10-27"
     ],
     "math": {
@@ -182,18 +182,18 @@
         "evidence_count": 6.0,
         "geo_vector": 0.0,
         "macro_evidence_count": 5.0,
-        "macro_vector": 0.464,
+        "macro_vector": 0.468,
         "ridge_reach": 0.0,
         "sync": 2.0794,
         "sync_evidence_count": 1.0
       },
       "z_indices": {
-        "defensive_decay": 15.4596,
-        "dust_cloud": 6.2233,
+        "defensive_decay": 13.3791,
+        "dust_cloud": 6.0541,
         "geo_vector": 0.0,
-        "macro_vector": 0.0461,
+        "macro_vector": 0.0593,
         "ridge_reach": 0.0,
-        "sync": 5.7695
+        "sync": 5.6328
       }
     }
   },
@@ -206,7 +206,7 @@
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": 19.2598,
+    "linear_score": 17.5799,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
@@ -217,7 +217,7 @@
       "evidence_count": 6.0,
       "geo_vector": 0.0,
       "macro_evidence_count": 5.0,
-      "macro_vector": 0.464,
+      "macro_vector": 0.468,
       "ridge_reach": 0.0,
       "sync": 2.0794,
       "sync_evidence_count": 1.0
@@ -225,12 +225,12 @@
     "raw_probability": null,
     "raw_probability_probe": 1.0,
     "z_indices": {
-      "defensive_decay": 15.4596,
-      "dust_cloud": 6.2233,
+      "defensive_decay": 13.3791,
+      "dust_cloud": 6.0541,
       "geo_vector": 0.0,
-      "macro_vector": 0.0461,
+      "macro_vector": 0.0593,
       "ridge_reach": 0.0,
-      "sync": 5.7695
+      "sync": 5.6328
     }
   },
   "source_counts": {
@@ -270,7 +270,7 @@
         "form": "8-K",
         "items": "3.01,5.03,7.01,9.01"
       },
-      "observed_at_utc": "2026-10-28T05:21:31Z",
+      "observed_at_utc": "2026-10-28T12:37:52Z",
       "sector": "autos",
       "source": "SEC EDGAR submissions",
       "source_type": "sec_filing",
@@ -298,7 +298,7 @@
         "latest": 0.29,
         "series_id": "T10Y2Y"
       },
-      "observed_at_utc": "2026-10-28T05:21:31Z",
+      "observed_at_utc": "2026-10-28T12:37:52Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -324,7 +324,7 @@
         "latest": 3.88,
         "series_id": "DFF"
       },
-      "observed_at_utc": "2026-10-28T05:21:31Z",
+      "observed_at_utc": "2026-10-28T12:37:52Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -350,7 +350,7 @@
         "latest": 5.0,
         "series_id": "DGS10"
       },
-      "observed_at_utc": "2026-10-28T05:21:31Z",
+      "observed_at_utc": "2026-10-28T12:37:52Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -378,7 +378,7 @@
         "latest": 3.3,
         "series_id": "BAMLH0A0HYM2"
       },
-      "observed_at_utc": "2026-10-28T05:21:31Z",
+      "observed_at_utc": "2026-10-28T12:37:52Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -394,24 +394,24 @@
         "defensive_decay": 0.0,
         "dust_cloud": 0.0,
         "geo_vector": 0.0,
-        "macro_vector": 0.02400000000000002,
+        "macro_vector": 0.028000000000000025,
         "ridge_reach": 0.0
       },
       "entity": "NFCI",
       "entity_name": "Chicago Fed National Financial Conditions Index",
-      "event_time_utc": "2026-10-16T00:00:00Z",
-      "id": "8decbea6f3df3a9d8586819d",
+      "event_time_utc": "2026-10-23T00:00:00Z",
+      "id": "cafe5c467a99194275879ff9",
       "metadata": {
-        "delta": 0.006000000000000005,
-        "latest": -0.496,
+        "delta": 0.007000000000000006,
+        "latest": -0.487,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-28T05:21:31Z",
+      "observed_at_utc": "2026-10-28T12:37:52Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
-      "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.496, change +0.006",
-      "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.496, change +0.006",
+      "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.487, change +0.007",
+      "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.487, change +0.007",
       "url": "https://fred.stlouisfed.org/series/NFCI"
     }
   ]
