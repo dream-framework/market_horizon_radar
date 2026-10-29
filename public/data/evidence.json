@@ -22,7 +22,7 @@
       "form": "8-K",
       "items": "2.02,9.01"
     },
-    "observed_at_utc": "2026-10-29T02:19:38Z",
+    "observed_at_utc": "2026-10-29T09:46:12Z",
     "sector": "logistics",
     "source": "SEC EDGAR submissions",
     "source_type": "sec_filing",
@@ -50,7 +50,7 @@
       "latest": 0.38,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-10-29T02:19:38Z",
+    "observed_at_utc": "2026-10-29T09:46:12Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -82,7 +82,7 @@
       "form": "8-K",
       "items": "3.01,5.03,7.01,9.01"
     },
-    "observed_at_utc": "2026-10-29T02:19:38Z",
+    "observed_at_utc": "2026-10-29T09:46:12Z",
     "sector": "autos",
     "source": "SEC EDGAR submissions",
     "source_type": "sec_filing",
@@ -108,7 +108,7 @@
       "latest": 3.88,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-10-29T02:19:38Z",
+    "observed_at_utc": "2026-10-29T09:46:12Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -136,7 +136,7 @@
       "latest": 4.99,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-10-29T02:19:38Z",
+    "observed_at_utc": "2026-10-29T09:46:12Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -164,7 +164,7 @@
       "latest": 3.18,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-10-29T02:19:38Z",
+    "observed_at_utc": "2026-10-29T09:46:12Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -192,7 +192,7 @@
       "latest": -0.487,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-10-29T02:19:38Z",
+    "observed_at_utc": "2026-10-29T09:46:12Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
