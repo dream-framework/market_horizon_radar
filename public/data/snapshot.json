@@ -133,13 +133,13 @@
       "source": "GDELT DOC"
     },
     {
-      "observations": 399,
+      "observations": 400,
       "ok": true,
       "series": "DFF",
       "source": "FRED"
     },
     {
-      "observations": 285,
+      "observations": 286,
       "ok": true,
       "series": "DGS10",
       "source": "FRED"
@@ -163,13 +163,13 @@
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-30T15:46:27Z",
+  "generated_at_utc": "2026-10-30T20:38:39Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
       "Current phase is WARMUP (insufficient_live_corporate_evidence) with gated probability n/a and raw ungated pressure n/a. Confidence: 20.0%. Baseline status: insufficient_live_evidence.",
       "Gate active: sync evidence 1 < required 4; corporate deformation evidence 1 < required 3.",
-      "Raw ridge/dust balance: dust=2.20, decay=0.00, reach=0.00, geo=0.00, macro=0.79, sync=2.08.",
+      "Raw ridge/dust balance: dust=2.20, decay=0.00, reach=0.00, geo=0.00, macro=0.83, sync=2.08.",
       "Top deformation evidence: FDX 8-K filed 2026-10-28"
     ],
     "math": {
@@ -182,18 +182,18 @@
         "evidence_count": 6.0,
         "geo_vector": 0.0,
         "macro_evidence_count": 5.0,
-        "macro_vector": 0.788,
+        "macro_vector": 0.828,
         "ridge_reach": 0.0,
         "sync": 2.0794,
         "sync_evidence_count": 1.0
       },
       "z_indices": {
         "defensive_decay": -0.1356,
-        "dust_cloud": 3.4653,
+        "dust_cloud": 3.4318,
         "geo_vector": 0.0,
-        "macro_vector": 1.2368,
+        "macro_vector": 1.3833,
         "ridge_reach": 0.0,
-        "sync": 4.266
+        "sync": 4.2071
       }
     }
   },
@@ -206,7 +206,7 @@
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": 5.3911,
+    "linear_score": 5.3726,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
@@ -217,20 +217,20 @@
       "evidence_count": 6.0,
       "geo_vector": 0.0,
       "macro_evidence_count": 5.0,
-      "macro_vector": 0.788,
+      "macro_vector": 0.828,
       "ridge_reach": 0.0,
       "sync": 2.0794,
       "sync_evidence_count": 1.0
     },
     "raw_probability": null,
-    "raw_probability_probe": 0.9955,
+    "raw_probability_probe": 0.9954,
     "z_indices": {
       "defensive_decay": -0.1356,
-      "dust_cloud": 3.4653,
+      "dust_cloud": 3.4318,
       "geo_vector": 0.0,
-      "macro_vector": 1.2368,
+      "macro_vector": 1.3833,
       "ridge_reach": 0.0,
-      "sync": 4.266
+      "sync": 4.2071
     }
   },
   "source_counts": {
@@ -245,6 +245,60 @@
     "evidence_total": 6
   },
   "top_evidence": [
+    {
+      "classes": [],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.0,
+        "ridge_reach": 0.0
+      },
+      "entity": "DFF",
+      "entity_name": "Effective Federal Funds Rate",
+      "event_time_utc": "2026-10-29T00:00:00Z",
+      "id": "7ff6f56059693a69509d2242",
+      "metadata": {
+        "delta": 0.0,
+        "latest": 3.88,
+        "series_id": "DFF"
+      },
+      "observed_at_utc": "2026-10-30T20:38:39Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "DFF Effective Federal Funds Rate latest 3.88, change +0",
+      "title": "DFF Effective Federal Funds Rate latest 3.88, change +0",
+      "url": "https://fred.stlouisfed.org/series/DFF"
+    },
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.2799999999999976,
+        "ridge_reach": 0.0
+      },
+      "entity": "DGS10",
+      "entity_name": "10-Year Treasury Constant Maturity Rate",
+      "event_time_utc": "2026-10-29T00:00:00Z",
+      "id": "3f0cd4b03b350228d4b3d04b",
+      "metadata": {
+        "delta": -0.0699999999999994,
+        "latest": 4.98,
+        "series_id": "DGS10"
+      },
+      "observed_at_utc": "2026-10-30T20:38:39Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.98, change -0.07",
+      "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 4.98, change -0.07",
+      "url": "https://fred.stlouisfed.org/series/DGS10"
+    },
     {
       "classes": [
         "macro_vector"
@@ -265,7 +319,7 @@
         "latest": 0.37,
         "series_id": "T10Y2Y"
       },
-      "observed_at_utc": "2026-10-30T15:46:27Z",
+      "observed_at_utc": "2026-10-30T20:38:39Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -293,7 +347,7 @@
         "latest": 3.26,
         "series_id": "BAMLH0A0HYM2"
       },
-      "observed_at_utc": "2026-10-30T15:46:27Z",
+      "observed_at_utc": "2026-10-30T20:38:39Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -324,67 +378,13 @@
         "form": "8-K",
         "items": "2.02,9.01"
       },
-      "observed_at_utc": "2026-10-30T15:46:27Z",
+      "observed_at_utc": "2026-10-30T20:38:39Z",
       "sector": "logistics",
       "source": "SEC EDGAR submissions",
       "source_type": "sec_filing",
       "summary": "fdx-20261028 FALSE 0001048911 0001048911 2026-10-28 2026-10-28 0001048911 us-gaap:CommonStockMember 2026-10-28 2026-10-28 0001048911 fdx:OnePointSixTwoFivePercentageNotesDueTwoThousandTwentySevenMember 2026-10-28 2026-10-28 0001048911 fdx:ZeroPointFourFiveZeroPercentNotesDueTwentyTwentyNine29AMember 2026-10-28 2026-10-28 0001048911 fdx:ZeroPointFourFiveZeroP",
       "title": "FDX 8-K filed 2026-10-28",
       "url": "https://www.sec.gov/Archives/edgar/data/1048911/000104891126000126/fdx-20261028.htm"
-    },
-    {
-      "classes": [],
-      "classification": {
-        "defensive_decay": 0.0,
-        "dust_cloud": 0.0,
-        "geo_vector": 0.0,
-        "macro_vector": 0.0,
-        "ridge_reach": 0.0
-      },
-      "entity": "DFF",
-      "entity_name": "Effective Federal Funds Rate",
-      "event_time_utc": "2026-10-28T00:00:00Z",
-      "id": "d5ab428b9ce2176520911dd7",
-      "metadata": {
-        "delta": 0.0,
-        "latest": 3.88,
-        "series_id": "DFF"
-      },
-      "observed_at_utc": "2026-10-30T15:46:27Z",
-      "sector": "macro",
-      "source": "FRED",
-      "source_type": "macro_series",
-      "summary": "DFF Effective Federal Funds Rate latest 3.88, change +0",
-      "title": "DFF Effective Federal Funds Rate latest 3.88, change +0",
-      "url": "https://fred.stlouisfed.org/series/DFF"
-    },
-    {
-      "classes": [
-        "macro_vector"
-      ],
-      "classification": {
-        "defensive_decay": 0.0,
-        "dust_cloud": 0.0,
-        "geo_vector": 0.0,
-        "macro_vector": 0.23999999999999844,
-        "ridge_reach": 0.0
-      },
-      "entity": "DGS10",
-      "entity_name": "10-Year Treasury Constant Maturity Rate",
-      "event_time_utc": "2026-10-28T00:00:00Z",
-      "id": "0ba6ab42ea98f6fbcf3a3d5c",
-      "metadata": {
-        "delta": 0.05999999999999961,
-        "latest": 5.05,
-        "series_id": "DGS10"
-      },
-      "observed_at_utc": "2026-10-30T15:46:27Z",
-      "sector": "macro",
-      "source": "FRED",
-      "source_type": "macro_series",
-      "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 5.05, change +0.06",
-      "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 5.05, change +0.06",
-      "url": "https://fred.stlouisfed.org/series/DGS10"
     },
     {
       "classes": [
@@ -406,7 +406,7 @@
         "latest": -0.487,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-30T15:46:27Z",
+      "observed_at_utc": "2026-10-30T20:38:39Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
