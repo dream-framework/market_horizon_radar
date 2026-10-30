@@ -151,7 +151,7 @@
       "source": "FRED"
     },
     {
-      "observations": 289,
+      "observations": 290,
       "ok": true,
       "series": "BAMLH0A0HYM2",
       "source": "FRED"
@@ -163,37 +163,37 @@
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-30T08:28:21Z",
+  "generated_at_utc": "2026-10-30T15:46:27Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
       "Current phase is WARMUP (insufficient_live_corporate_evidence) with gated probability n/a and raw ungated pressure n/a. Confidence: 20.0%. Baseline status: insufficient_live_evidence.",
-      "Gate active: sync evidence 2 < required 4; corporate deformation evidence 2 < required 3.",
-      "Raw ridge/dust balance: dust=4.60, decay=2.60, reach=0.00, geo=0.00, macro=0.47, sync=2.89.",
-      "Top deformation evidence: GM 8-K filed 2026-10-27; FDX 8-K filed 2026-10-28; GM 8-K filed 2026-10-27"
+      "Gate active: sync evidence 1 < required 4; corporate deformation evidence 1 < required 3.",
+      "Raw ridge/dust balance: dust=2.20, decay=0.00, reach=0.00, geo=0.00, macro=0.79, sync=2.08.",
+      "Top deformation evidence: FDX 8-K filed 2026-10-28"
     ],
     "math": {
       "formula": "p = sigmoid(b0 + 0.90*dust_z + 0.70*decay_z + 0.55*sync_z + 0.35*geo_z + 0.30*macro_z - 0.50*reach_z)",
       "interpretation": "Positive dust/decay/sync/geo/macro raises phase-transition pressure. Positive reach lowers it.",
       "raw_indices": {
-        "corporate_deformation_count": 2.0,
-        "defensive_decay": 2.6,
-        "dust_cloud": 4.6,
-        "evidence_count": 7.0,
+        "corporate_deformation_count": 1.0,
+        "defensive_decay": 0.0,
+        "dust_cloud": 2.2,
+        "evidence_count": 6.0,
         "geo_vector": 0.0,
         "macro_evidence_count": 5.0,
-        "macro_vector": 0.468,
+        "macro_vector": 0.788,
         "ridge_reach": 0.0,
-        "sync": 2.8904,
-        "sync_evidence_count": 2.0
+        "sync": 2.0794,
+        "sync_evidence_count": 1.0
       },
       "z_indices": {
-        "defensive_decay": 7.6811,
-        "dust_cloud": 7.781,
+        "defensive_decay": -0.1356,
+        "dust_cloud": 3.4653,
         "geo_vector": 0.0,
-        "macro_vector": 0.0404,
+        "macro_vector": 1.2368,
         "ridge_reach": 0.0,
-        "sync": 6.1771
+        "sync": 4.266
       }
     }
   },
@@ -201,49 +201,48 @@
     "baseline_status": "insufficient_live_evidence",
     "confidence": 0.2,
     "gate_reasons": [
-      "sync evidence 2 < required 4",
-      "corporate deformation evidence 2 < required 3"
+      "sync evidence 1 < required 4",
+      "corporate deformation evidence 1 < required 3"
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": 15.4392,
+    "linear_score": 5.3911,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
     "raw_indices": {
-      "corporate_deformation_count": 2.0,
-      "defensive_decay": 2.6,
-      "dust_cloud": 4.6,
-      "evidence_count": 7.0,
+      "corporate_deformation_count": 1.0,
+      "defensive_decay": 0.0,
+      "dust_cloud": 2.2,
+      "evidence_count": 6.0,
       "geo_vector": 0.0,
       "macro_evidence_count": 5.0,
-      "macro_vector": 0.468,
+      "macro_vector": 0.788,
       "ridge_reach": 0.0,
-      "sync": 2.8904,
-      "sync_evidence_count": 2.0
+      "sync": 2.0794,
+      "sync_evidence_count": 1.0
     },
     "raw_probability": null,
-    "raw_probability_probe": 1.0,
+    "raw_probability_probe": 0.9955,
     "z_indices": {
-      "defensive_decay": 7.6811,
-      "dust_cloud": 7.781,
+      "defensive_decay": -0.1356,
+      "dust_cloud": 3.4653,
       "geo_vector": 0.0,
-      "macro_vector": 0.0404,
+      "macro_vector": 1.2368,
       "ridge_reach": 0.0,
-      "sync": 6.1771
+      "sync": 4.266
     }
   },
   "source_counts": {
     "by_class": {
-      "defensive_decay": 1,
-      "dust_cloud": 2,
+      "dust_cloud": 1,
       "macro_vector": 4
     },
     "by_source_type": {
       "macro_series": 5,
-      "sec_filing": 2
+      "sec_filing": 1
     },
-    "evidence_total": 7
+    "evidence_total": 6
   },
   "top_evidence": [
     {
@@ -266,13 +265,41 @@
         "latest": 0.37,
         "series_id": "T10Y2Y"
       },
-      "observed_at_utc": "2026-10-30T08:28:21Z",
+      "observed_at_utc": "2026-10-30T15:46:27Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
       "summary": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.37, change -0.01",
       "title": "T10Y2Y 10-Year Minus 2-Year Treasury Spread latest 0.37, change -0.01",
       "url": "https://fred.stlouisfed.org/series/T10Y2Y"
+    },
+    {
+      "classes": [
+        "macro_vector"
+      ],
+      "classification": {
+        "defensive_decay": 0.0,
+        "dust_cloud": 0.0,
+        "geo_vector": 0.0,
+        "macro_vector": 0.47999999999999865,
+        "ridge_reach": 0.0
+      },
+      "entity": "BAMLH0A0HYM2",
+      "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
+      "event_time_utc": "2026-10-29T00:00:00Z",
+      "id": "b7b43ed4fd3e159e8aa2e066",
+      "metadata": {
+        "delta": 0.11999999999999966,
+        "latest": 3.26,
+        "series_id": "BAMLH0A0HYM2"
+      },
+      "observed_at_utc": "2026-10-30T15:46:27Z",
+      "sector": "macro",
+      "source": "FRED",
+      "source_type": "macro_series",
+      "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.26, change +0.12",
+      "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.26, change +0.12",
+      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
     },
     {
       "classes": [
@@ -297,7 +324,7 @@
         "form": "8-K",
         "items": "2.02,9.01"
       },
-      "observed_at_utc": "2026-10-30T08:28:21Z",
+      "observed_at_utc": "2026-10-30T15:46:27Z",
       "sector": "logistics",
       "source": "SEC EDGAR submissions",
       "source_type": "sec_filing",
@@ -323,7 +350,7 @@
         "latest": 3.88,
         "series_id": "DFF"
       },
-      "observed_at_utc": "2026-10-30T08:28:21Z",
+      "observed_at_utc": "2026-10-30T15:46:27Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -351,73 +378,13 @@
         "latest": 5.05,
         "series_id": "DGS10"
       },
-      "observed_at_utc": "2026-10-30T08:28:21Z",
+      "observed_at_utc": "2026-10-30T15:46:27Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
       "summary": "DGS10 10-Year Treasury Constant Maturity Rate latest 5.05, change +0.06",
       "title": "DGS10 10-Year Treasury Constant Maturity Rate latest 5.05, change +0.06",
       "url": "https://fred.stlouisfed.org/series/DGS10"
-    },
-    {
-      "classes": [
-        "macro_vector"
-      ],
-      "classification": {
-        "defensive_decay": 0.0,
-        "dust_cloud": 0.0,
-        "geo_vector": 0.0,
-        "macro_vector": 0.16000000000000014,
-        "ridge_reach": 0.0
-      },
-      "entity": "BAMLH0A0HYM2",
-      "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
-      "event_time_utc": "2026-10-28T00:00:00Z",
-      "id": "fa4a44b86848944d34abce4c",
-      "metadata": {
-        "delta": -0.040000000000000036,
-        "latest": 3.14,
-        "series_id": "BAMLH0A0HYM2"
-      },
-      "observed_at_utc": "2026-10-30T08:28:21Z",
-      "sector": "macro",
-      "source": "FRED",
-      "source_type": "macro_series",
-      "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.14, change -0.04",
-      "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.14, change -0.04",
-      "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
-    },
-    {
-      "classes": [
-        "dust_cloud",
-        "defensive_decay"
-      ],
-      "classification": {
-        "defensive_decay": 2.6,
-        "dust_cloud": 2.4,
-        "geo_vector": 0.0,
-        "macro_vector": 0.0,
-        "ridge_reach": 0.0
-      },
-      "entity": "GM",
-      "entity_name": "General Motors Co",
-      "event_time_utc": "2026-10-27T10:30:05Z",
-      "id": "d292918e08270361c6cca364",
-      "metadata": {
-        "accession": "0001193125-26-432602",
-        "classification_basis": [
-          "SEC material item 3.01"
-        ],
-        "form": "8-K",
-        "items": "3.01,5.03,7.01,9.01"
-      },
-      "observed_at_utc": "2026-10-30T08:28:21Z",
-      "sector": "autos",
-      "source": "SEC EDGAR submissions",
-      "source_type": "sec_filing",
-      "summary": "8-K General Motors Co false 0001467858 --12-31 0001467858 2026-10-26 2026-10-26 UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 FORM 8-K CURRENT REPORT Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934 Date of Report (Date of earliest event reported): October 26, 2026 GENERAL MOTORS COMPANY (Exact name of registra",
-      "title": "GM 8-K filed 2026-10-27",
-      "url": "https://www.sec.gov/Archives/edgar/data/1467858/000119312526432602/d53522d8k.htm"
     },
     {
       "classes": [
@@ -439,7 +406,7 @@
         "latest": -0.487,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-30T08:28:21Z",
+      "observed_at_utc": "2026-10-30T15:46:27Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
