@@ -19,7 +19,7 @@
       "latest": 0.38,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-10-31T18:24:52Z",
+    "observed_at_utc": "2026-10-31T22:23:44Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -45,7 +45,7 @@
       "latest": 3.88,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-10-31T18:24:52Z",
+    "observed_at_utc": "2026-10-31T22:23:44Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -73,7 +73,7 @@
       "latest": 4.98,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-10-31T18:24:52Z",
+    "observed_at_utc": "2026-10-31T22:23:44Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -101,44 +101,13 @@
       "latest": 3.26,
       "series_id": "BAMLH0A0HYM2"
     },
-    "observed_at_utc": "2026-10-31T18:24:52Z",
+    "observed_at_utc": "2026-10-31T22:23:44Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
     "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.26, change +0.12",
     "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.26, change +0.12",
     "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
-  },
-  {
-    "classes": [
-      "dust_cloud"
-    ],
-    "classification": {
-      "defensive_decay": 0.0,
-      "dust_cloud": 2.2,
-      "geo_vector": 0.0,
-      "macro_vector": 0.0,
-      "ridge_reach": 0.0
-    },
-    "entity": "FDX",
-    "entity_name": "FEDEX CORP",
-    "event_time_utc": "2026-10-28T20:05:46Z",
-    "id": "3809dc71002a950c3bd7f57f",
-    "metadata": {
-      "accession": "0001048911-26-000126",
-      "classification_basis": [
-        "dust_cloud hard phrase: restatement"
-      ],
-      "form": "8-K",
-      "items": "2.02,9.01"
-    },
-    "observed_at_utc": "2026-10-31T18:24:52Z",
-    "sector": "logistics",
-    "source": "SEC EDGAR submissions",
-    "source_type": "sec_filing",
-    "summary": "fdx-20261028 FALSE 0001048911 0001048911 2026-10-28 2026-10-28 0001048911 us-gaap:CommonStockMember 2026-10-28 2026-10-28 0001048911 fdx:OnePointSixTwoFivePercentageNotesDueTwoThousandTwentySevenMember 2026-10-28 2026-10-28 0001048911 fdx:ZeroPointFourFiveZeroPercentNotesDueTwentyTwentyNine29AMember 2026-10-28 2026-10-28 0001048911 fdx:ZeroPointFourFiveZeroP",
-    "title": "FDX 8-K filed 2026-10-28",
-    "url": "https://www.sec.gov/Archives/edgar/data/1048911/000104891126000126/fdx-20261028.htm"
   },
   {
     "classes": [
@@ -160,7 +129,7 @@
       "latest": -0.487,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-10-31T18:24:52Z",
+    "observed_at_utc": "2026-10-31T22:23:44Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",

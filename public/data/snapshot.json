@@ -163,37 +163,36 @@
       "source": "FRED"
     }
   ],
-  "generated_at_utc": "2026-10-31T18:24:52Z",
+  "generated_at_utc": "2026-10-31T22:23:44Z",
   "model_name": "market_horizon_radar_live_only_v2",
   "narrative": {
     "english": [
       "Current phase is WARMUP (insufficient_live_corporate_evidence) with gated probability n/a and raw ungated pressure n/a. Confidence: 20.0%. Baseline status: insufficient_live_evidence.",
-      "Gate active: sync evidence 1 < required 4; corporate deformation evidence 1 < required 3.",
-      "Raw ridge/dust balance: dust=2.20, decay=0.00, reach=0.00, geo=0.00, macro=0.83, sync=2.08.",
-      "Top deformation evidence: FDX 8-K filed 2026-10-28"
+      "Gate active: sync evidence 0 < required 4; corporate deformation evidence 0 < required 3; dust and defensive decay are both zero.",
+      "Raw ridge/dust balance: dust=0.00, decay=0.00, reach=0.00, geo=0.00, macro=0.83, sync=0.00."
     ],
     "math": {
       "formula": "p = sigmoid(b0 + 0.90*dust_z + 0.70*decay_z + 0.55*sync_z + 0.35*geo_z + 0.30*macro_z - 0.50*reach_z)",
       "interpretation": "Positive dust/decay/sync/geo/macro raises phase-transition pressure. Positive reach lowers it.",
       "raw_indices": {
-        "corporate_deformation_count": 1.0,
+        "corporate_deformation_count": 0.0,
         "defensive_decay": 0.0,
-        "dust_cloud": 2.2,
-        "evidence_count": 6.0,
+        "dust_cloud": 0.0,
+        "evidence_count": 5.0,
         "geo_vector": 0.0,
         "macro_evidence_count": 5.0,
         "macro_vector": 0.828,
         "ridge_reach": 0.0,
-        "sync": 2.0794,
-        "sync_evidence_count": 1.0
+        "sync": 0.0,
+        "sync_evidence_count": 0.0
       },
       "z_indices": {
         "defensive_decay": -0.1356,
-        "dust_cloud": 3.3062,
+        "dust_cloud": -0.2194,
         "geo_vector": 0.0,
-        "macro_vector": 1.369,
+        "macro_vector": 1.3655,
         "ridge_reach": 0.0,
-        "sync": 3.9925
+        "sync": -0.2303
       }
     }
   },
@@ -201,48 +200,47 @@
     "baseline_status": "insufficient_live_evidence",
     "confidence": 0.2,
     "gate_reasons": [
-      "sync evidence 1 < required 4",
-      "corporate deformation evidence 1 < required 3"
+      "sync evidence 0 < required 4",
+      "corporate deformation evidence 0 < required 3",
+      "dust and defensive decay are both zero"
     ],
     "history_points": 720,
     "history_rows_available": 720,
-    "linear_score": 5.1372,
+    "linear_score": -0.3594,
     "phase": "WARMUP",
     "phase_label": "insufficient_live_corporate_evidence",
     "probability": null,
     "raw_indices": {
-      "corporate_deformation_count": 1.0,
+      "corporate_deformation_count": 0.0,
       "defensive_decay": 0.0,
-      "dust_cloud": 2.2,
-      "evidence_count": 6.0,
+      "dust_cloud": 0.0,
+      "evidence_count": 5.0,
       "geo_vector": 0.0,
       "macro_evidence_count": 5.0,
       "macro_vector": 0.828,
       "ridge_reach": 0.0,
-      "sync": 2.0794,
-      "sync_evidence_count": 1.0
+      "sync": 0.0,
+      "sync_evidence_count": 0.0
     },
     "raw_probability": null,
-    "raw_probability_probe": 0.9942,
+    "raw_probability_probe": 0.4111,
     "z_indices": {
       "defensive_decay": -0.1356,
-      "dust_cloud": 3.3062,
+      "dust_cloud": -0.2194,
       "geo_vector": 0.0,
-      "macro_vector": 1.369,
+      "macro_vector": 1.3655,
       "ridge_reach": 0.0,
-      "sync": 3.9925
+      "sync": -0.2303
     }
   },
   "source_counts": {
     "by_class": {
-      "dust_cloud": 1,
       "macro_vector": 4
     },
     "by_source_type": {
-      "macro_series": 5,
-      "sec_filing": 1
+      "macro_series": 5
     },
-    "evidence_total": 6
+    "evidence_total": 5
   },
   "top_evidence": [
     {
@@ -265,7 +263,7 @@
         "latest": 0.38,
         "series_id": "T10Y2Y"
       },
-      "observed_at_utc": "2026-10-31T18:24:52Z",
+      "observed_at_utc": "2026-10-31T22:23:44Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -291,7 +289,7 @@
         "latest": 3.88,
         "series_id": "DFF"
       },
-      "observed_at_utc": "2026-10-31T18:24:52Z",
+      "observed_at_utc": "2026-10-31T22:23:44Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -319,7 +317,7 @@
         "latest": 4.98,
         "series_id": "DGS10"
       },
-      "observed_at_utc": "2026-10-31T18:24:52Z",
+      "observed_at_utc": "2026-10-31T22:23:44Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
@@ -347,44 +345,13 @@
         "latest": 3.26,
         "series_id": "BAMLH0A0HYM2"
       },
-      "observed_at_utc": "2026-10-31T18:24:52Z",
+      "observed_at_utc": "2026-10-31T22:23:44Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
       "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.26, change +0.12",
       "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.26, change +0.12",
       "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
-    },
-    {
-      "classes": [
-        "dust_cloud"
-      ],
-      "classification": {
-        "defensive_decay": 0.0,
-        "dust_cloud": 2.2,
-        "geo_vector": 0.0,
-        "macro_vector": 0.0,
-        "ridge_reach": 0.0
-      },
-      "entity": "FDX",
-      "entity_name": "FEDEX CORP",
-      "event_time_utc": "2026-10-28T20:05:46Z",
-      "id": "3809dc71002a950c3bd7f57f",
-      "metadata": {
-        "accession": "0001048911-26-000126",
-        "classification_basis": [
-          "dust_cloud hard phrase: restatement"
-        ],
-        "form": "8-K",
-        "items": "2.02,9.01"
-      },
-      "observed_at_utc": "2026-10-31T18:24:52Z",
-      "sector": "logistics",
-      "source": "SEC EDGAR submissions",
-      "source_type": "sec_filing",
-      "summary": "fdx-20261028 FALSE 0001048911 0001048911 2026-10-28 2026-10-28 0001048911 us-gaap:CommonStockMember 2026-10-28 2026-10-28 0001048911 fdx:OnePointSixTwoFivePercentageNotesDueTwoThousandTwentySevenMember 2026-10-28 2026-10-28 0001048911 fdx:ZeroPointFourFiveZeroPercentNotesDueTwentyTwentyNine29AMember 2026-10-28 2026-10-28 0001048911 fdx:ZeroPointFourFiveZeroP",
-      "title": "FDX 8-K filed 2026-10-28",
-      "url": "https://www.sec.gov/Archives/edgar/data/1048911/000104891126000126/fdx-20261028.htm"
     },
     {
       "classes": [
@@ -406,7 +373,7 @@
         "latest": -0.487,
         "series_id": "NFCI"
       },
-      "observed_at_utc": "2026-10-31T18:24:52Z",
+      "observed_at_utc": "2026-10-31T22:23:44Z",
       "sector": "macro",
       "source": "FRED",
       "source_type": "macro_series",
