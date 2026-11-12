@@ -7,6 +7,34 @@
       "defensive_decay": 0.0,
       "dust_cloud": 0.0,
       "geo_vector": 0.0,
+      "macro_vector": 0.16000000000000014,
+      "ridge_reach": 0.0
+    },
+    "entity": "BAMLH0A0HYM2",
+    "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
+    "event_time_utc": "2026-11-11T00:00:00Z",
+    "id": "b688fa3aff80d332077c5017",
+    "metadata": {
+      "delta": -0.040000000000000036,
+      "latest": 3.3,
+      "series_id": "BAMLH0A0HYM2"
+    },
+    "observed_at_utc": "2026-11-12T18:46:36Z",
+    "sector": "macro",
+    "source": "FRED",
+    "source_type": "macro_series",
+    "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.3, change -0.04",
+    "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.3, change -0.04",
+    "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
+  },
+  {
+    "classes": [
+      "macro_vector"
+    ],
+    "classification": {
+      "defensive_decay": 0.0,
+      "dust_cloud": 0.0,
+      "geo_vector": 0.0,
       "macro_vector": 0.28,
       "ridge_reach": 0.0
     },
@@ -19,7 +47,7 @@
       "latest": 0.25,
       "series_id": "T10Y2Y"
     },
-    "observed_at_utc": "2026-11-12T10:52:13Z",
+    "observed_at_utc": "2026-11-12T18:46:36Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -45,7 +73,7 @@
       "latest": 3.88,
       "series_id": "DFF"
     },
-    "observed_at_utc": "2026-11-12T10:52:13Z",
+    "observed_at_utc": "2026-11-12T18:46:36Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -73,7 +101,7 @@
       "latest": 4.88,
       "series_id": "DGS10"
     },
-    "observed_at_utc": "2026-11-12T10:52:13Z",
+    "observed_at_utc": "2026-11-12T18:46:36Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
@@ -89,52 +117,24 @@
       "defensive_decay": 0.0,
       "dust_cloud": 0.0,
       "geo_vector": 0.0,
-      "macro_vector": 0.3200000000000003,
-      "ridge_reach": 0.0
-    },
-    "entity": "BAMLH0A0HYM2",
-    "entity_name": "ICE BofA US High Yield Option-Adjusted Spread",
-    "event_time_utc": "2026-11-09T00:00:00Z",
-    "id": "a3c4e869af4acc07fa879e20",
-    "metadata": {
-      "delta": -0.08000000000000007,
-      "latest": 3.34,
-      "series_id": "BAMLH0A0HYM2"
-    },
-    "observed_at_utc": "2026-11-12T10:52:13Z",
-    "sector": "macro",
-    "source": "FRED",
-    "source_type": "macro_series",
-    "summary": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.34, change -0.08",
-    "title": "BAMLH0A0HYM2 ICE BofA US High Yield Option-Adjusted Spread latest 3.34, change -0.08",
-    "url": "https://fred.stlouisfed.org/series/BAMLH0A0HYM2"
-  },
-  {
-    "classes": [
-      "macro_vector"
-    ],
-    "classification": {
-      "defensive_decay": 0.0,
-      "dust_cloud": 0.0,
-      "geo_vector": 0.0,
-      "macro_vector": 0.03200000000000003,
+      "macro_vector": 0.01200000000000001,
       "ridge_reach": 0.0
     },
     "entity": "NFCI",
     "entity_name": "Chicago Fed National Financial Conditions Index",
-    "event_time_utc": "2026-10-30T00:00:00Z",
-    "id": "f3370971e86ef66d79f74fd1",
+    "event_time_utc": "2026-11-06T00:00:00Z",
+    "id": "6e4c5f4ba2b30883761efc7a",
     "metadata": {
-      "delta": 0.008000000000000007,
-      "latest": -0.459,
+      "delta": 0.0030000000000000027,
+      "latest": -0.462,
       "series_id": "NFCI"
     },
-    "observed_at_utc": "2026-11-12T10:52:13Z",
+    "observed_at_utc": "2026-11-12T18:46:36Z",
     "sector": "macro",
     "source": "FRED",
     "source_type": "macro_series",
-    "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.459, change +0.008",
-    "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.459, change +0.008",
+    "summary": "NFCI Chicago Fed National Financial Conditions Index latest -0.462, change +0.003",
+    "title": "NFCI Chicago Fed National Financial Conditions Index latest -0.462, change +0.003",
     "url": "https://fred.stlouisfed.org/series/NFCI"
   }
 ]
